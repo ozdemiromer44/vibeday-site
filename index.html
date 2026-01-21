@@ -13,24 +13,28 @@
   <meta name="apple-itunes-app" content="app-id=6757344783" />
 
   <style>
-    .footer {
+    .footer-links{
   margin-top: 18px;
   padding-bottom: 10px;
-  text-align: center;
-  color: rgba(255,255,255,0.7);
-  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
 }
 
-.footer a {
+.footer-links a{
   color: rgba(255,255,255,0.85);
   text-decoration: none;
   border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 2px;
 }
 
-.footer a:hover {
+.footer-links a:hover{
   color: #fff;
   border-bottom-color: rgba(255,255,255,0.6);
 }
+
 
     :root{
       --glass-bg: rgba(255,255,255,0.08);
@@ -572,12 +576,6 @@
         </svg>
         Instagram
       </a>
-      </div>
-    <div class="footer">
-  <a href="https://ozdemiromer44.github.io/VibeDay/" target="_blank" rel="noopener noreferrer">
-    Privacy Policy
-  </a>
-</div>
 
       <a class="social-item" href="https://x.com/vibedayapp" target="_blank" rel="noopener noreferrer" aria-label="X">
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -600,6 +598,10 @@
         Contact
       </a>
     </div>
+    <div class="footer-links">
+  <a href="https://ozdemiromer44.github.io/VibeDay/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+  <a href="mailto:vibedayorj@gmail.com">Contact</a>
+</div>
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Screenshot preview">
