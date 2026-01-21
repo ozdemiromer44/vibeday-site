@@ -5,10 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vibe Day - Plan Your Day!</title>
 
-  <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-
-  <!-- iOS Smart App Banner -->
   <meta name="apple-itunes-app" content="app-id=6757344783" />
 
   <style>
@@ -18,23 +15,27 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
       color: #fff;
+
+      /* Mobilde “sığmıyor” hissini bitiren ana değişiklik */
       display: flex;
-      flex-direction: column;
+      justify-content: flex-start;
       align-items: center;
-      justify-content: center;
       min-height: 100vh;
+
       text-align: center;
     }
 
     .container {
-      max-width: 680px;
-      padding: 20px;
-      animation: fadeIn 1.5s ease-in-out;
+      width: 100%;
+      max-width: 640px;
+      padding: 28px 18px 34px;
+      animation: fadeIn 1.2s ease-in-out;
+      box-sizing: border-box;
     }
 
     .app-icon {
-      width: 92px;
-      height: 92px;
+      width: 84px;
+      height: 84px;
       border-radius: 22%;
       margin: 0 auto 14px;
       display: block;
@@ -42,7 +43,7 @@
     }
 
     h1 {
-      font-size: 3.3rem;
+      font-size: 3rem;
       margin: 0 0 0.75rem 0;
       letter-spacing: -1px;
       background: linear-gradient(to right, #ff00cc, #333399);
@@ -51,18 +52,19 @@
     }
 
     p {
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       color: #d1d5db;
-      margin: 0 0 2.2rem 0;
-      line-height: 1.6;
+      margin: 0 auto 1.8rem;
+      line-height: 1.55;
+      max-width: 42ch; /* mobilde satır uzunluğunu kontrol eder */
     }
 
     .store-buttons {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
     .btn {
@@ -70,8 +72,8 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: white;
-      padding: 14px 28px;
-      border-radius: 50px;
+      padding: 14px 22px;
+      border-radius: 999px;
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -80,19 +82,16 @@
       font-weight: 600;
       font-size: 1rem;
       user-select: none;
+      white-space: nowrap;
     }
 
     .btn:hover {
-      transform: translateY(-4px);
+      transform: translateY(-3px);
       background: rgba(255, 255, 255, 0.18);
       box-shadow: 0 10px 20px rgba(0,0,0,0.22);
     }
 
-    .btn svg {
-      width: 22px;
-      height: 22px;
-      flex: 0 0 auto;
-    }
+    .btn svg { width: 22px; height: 22px; flex: 0 0 auto; }
 
     .btn.disabled {
       opacity: 0.55;
@@ -105,7 +104,7 @@
     .subnote {
       font-size: 0.95rem;
       color: #cbd5e1;
-      margin: 0 0 1.6rem 0;
+      margin: 0 0 1.3rem 0;
       line-height: 1.5;
     }
 
@@ -117,23 +116,23 @@
 
     /* ===== Preview Carousel ===== */
     .preview-wrap {
-      margin: 18px 0 28px;
+      margin: 14px 0 22px;
       text-align: left;
     }
 
     .preview-title {
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: #cbd5e1;
-      margin: 0 0 10px 4px;
+      margin: 0 0 10px 6px;
     }
 
     .carousel {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       overflow-x: auto;
-      padding: 10px 6px 12px;
+      padding: 10px 8px 12px;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
 
@@ -143,30 +142,28 @@
       backdrop-filter: blur(10px);
     }
 
-    /* hide scrollbar (still scrollable) */
     .carousel::-webkit-scrollbar { height: 0px; }
     .carousel { scrollbar-width: none; }
 
     .shot {
       scroll-snap-align: start;
       flex: 0 0 auto;
-      width: 170px;           /* mobile-friendly card width */
-      max-width: 44vw;        /* adapts on small screens */
+      width: 150px;
       border-radius: 18px;
       overflow: hidden;
-      position: relative;
       cursor: pointer;
       border: 1px solid rgba(255,255,255,0.18);
       box-shadow: 0 14px 26px rgba(0,0,0,0.22);
-      transition: transform 0.2s ease, opacity 0.2s ease;
-      opacity: 0.92;
-      background: rgba(0,0,0,0.15);
+      opacity: 0.95;
+      background: rgba(0,0,0,0.12);
+
+      /* button reset */
+      padding: 0;
+      margin: 0;
+      outline: none;
     }
 
-    .shot:hover {
-      transform: translateY(-3px);
-      opacity: 1;
-    }
+    .shot:hover { opacity: 1; transform: translateY(-2px); }
 
     .shot img {
       display: block;
@@ -175,7 +172,7 @@
     }
 
     .preview-hint {
-      margin: 10px 4px 0;
+      margin: 10px 6px 0;
       color: #9ca3af;
       font-size: 0.9rem;
     }
@@ -183,10 +180,10 @@
     /* ===== Social ===== */
     .social-links {
       display: flex;
-      gap: 26px;
+      gap: 24px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-top: 12px;
+      margin-top: 14px;
     }
 
     .social-item {
@@ -198,21 +195,14 @@
       text-decoration: none;
       text-transform: uppercase;
       letter-spacing: 1px;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       transition: color 0.25s ease, transform 0.25s ease;
       user-select: none;
     }
 
-    .social-item svg {
-      width: 22px;
-      height: 22px;
-      fill: currentColor;
-    }
+    .social-item svg { width: 22px; height: 22px; fill: currentColor; }
 
-    .social-item:hover {
-      color: #fff;
-      transform: translateY(-2px);
-    }
+    .social-item:hover { color: #fff; transform: translateY(-2px); }
 
     /* ===== Lightbox ===== */
     .lightbox {
@@ -224,12 +214,9 @@
       align-items: center;
       justify-content: center;
       z-index: 9999;
-      padding: 18px;
+      padding: 16px;
     }
-
-    .lightbox.open {
-      display: flex;
-    }
+    .lightbox.open { display: flex; }
 
     .lightbox-panel {
       width: min(92vw, 520px);
@@ -241,12 +228,7 @@
       position: relative;
     }
 
-    .lightbox-img {
-      width: 100%;
-      height: auto;
-      display: block;
-      background: rgba(0,0,0,0.2);
-    }
+    .lightbox-img { width: 100%; height: auto; display: block; }
 
     .lb-topbar {
       position: absolute;
@@ -257,7 +239,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 10px;
-      pointer-events: none; /* so clicks go to buttons only */
+      pointer-events: none;
     }
 
     .lb-chip {
@@ -281,46 +263,52 @@
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      justify-content: center;
       transition: transform 0.2s ease, background 0.2s ease;
       user-select: none;
+      min-width: 92px;
     }
 
-    .lb-btn:hover {
-      transform: translateY(-2px);
-      background: rgba(255,255,255,0.18);
-    }
+    .lb-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.18); }
 
     .lb-controls {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       padding: 12px;
       background: rgba(255,255,255,0.06);
       border-top: 1px solid rgba(255,255,255,0.12);
     }
-
-    .lb-controls .lb-btn {
-      flex: 1 1 auto;
-      justify-content: center;
-    }
+    .lb-controls .lb-btn { flex: 1 1 auto; }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
+      from { opacity: 0; transform: translateY(14px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
+    /* موبildə asıl farkı veren bölüm */
     @media (max-width: 600px) {
-      h1 { font-size: 2.5rem; }
-      .shot { width: 160px; max-width: 60vw; }
-      .lightbox-panel { width: min(92vw, 520px); }
+      .container { padding-top: 22px; }
+
+      h1 { font-size: 2.35rem; }
+      p  { font-size: 1rem; max-width: 34ch; }
+
+      .store-buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .shot { width: 140px; }
     }
   </style>
 </head>
 
 <body>
   <div class="container">
-    <!-- App icon above title -->
     <img src="app-icon.png" alt="Vibe Day App Icon" class="app-icon" />
 
     <h1>Vibe Day</h1>
@@ -330,22 +318,20 @@
     </p>
 
     <div class="store-buttons">
-      <a
-        href="https://apps.apple.com/us/app/vibe-day/id6757344783"
-        class="btn"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Download on the App Store"
-      >
+      <a href="https://apps.apple.com/us/app/vibe-day/id6757344783"
+         class="btn"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Download on the App Store">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path fill="currentColor" d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.37 12.36,4.1 13,3.5Z" />
+          <path fill="currentColor" d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.37 12.36,4.1 13,3.5Z"/>
         </svg>
         App Store
       </a>
 
       <a class="btn disabled" aria-label="Google Play coming soon">
         <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+          <path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
         </svg>
         Google Play (Feb 1)
       </a>
@@ -356,48 +342,25 @@
       <div id="countdown" class="countdown" aria-live="polite"></div>
     </div>
 
-    <!-- App Preview Carousel -->
     <div class="preview-wrap">
       <div class="preview-title">App Preview</div>
 
-      <div class="carousel" id="carousel" aria-label="App preview screenshots (swipe left/right)">
-        <!-- Keep filenames as you have them: image1.png ... image10.png -->
-        <button class="shot" type="button" data-index="1" aria-label="Open screenshot 1">
-          <img src="screens/image1.png" alt="Vibe Day screenshot 1" loading="lazy" />
-        </button>
-        <button class="shot" type="button" data-index="2" aria-label="Open screenshot 2">
-          <img src="screens/image2.png" alt="Vibe Day screenshot 2" loading="lazy" />
-        </button>
-        <button class="shot" type="button" data-index="3" aria-label="Open screenshot 3">
-          <img src="screens/image3.png" alt="Vibe Day screenshot 3" loading="lazy" />
-        </button>
-        <button class="shot" type="button" data-index="4" aria-label="Open screenshot 4">
-          <img src="screens/image4.png" alt="Vibe Day screenshot 4" loading="lazy" />
-        </button>
-        <button class="shot" type="button" data-index="5" aria-label="Open screenshot 5">
-          <img src="screens/image5.png" alt="Vibe Day screenshot 5" loading="lazy" />
-        </button>
-        <button class="shot" type="button" data-index="6" aria-label="Open screenshot 6">
-          <img src="screens/image6.png" alt="Vibe Day screenshot 6" loading="lazy" />
-        </button>
-        <button class="shot" type="button" data-index="7" aria-label="Open screenshot 7">
-          <img src="screens/image7.png" alt="Vibe Day screenshot 7" loading="lazy" />
-        </button>
-        <button class="shot" type="button" data-index="8" aria-label="Open screenshot 8">
-          <img src="screens/image8.png" alt="Vibe Day screenshot 8" loading="lazy" />
-        </button>
-        <button class="shot" type="button" data-index="9" aria-label="Open screenshot 9">
-          <img src="screens/image9.png" alt="Vibe Day screenshot 9" loading="lazy" />
-        </button>
-        <button class="shot" type="button" data-index="10" aria-label="Open screenshot 10">
-          <img src="screens/image10.png" alt="Vibe Day screenshot 10" loading="lazy" />
-        </button>
+      <div class="carousel" aria-label="App preview screenshots (swipe left/right)">
+        <button class="shot" type="button" data-index="1" aria-label="Open screenshot 1"><img src="screens/image1.png" alt="Vibe Day screenshot 1" loading="lazy"></button>
+        <button class="shot" type="button" data-index="2" aria-label="Open screenshot 2"><img src="screens/image2.png" alt="Vibe Day screenshot 2" loading="lazy"></button>
+        <button class="shot" type="button" data-index="3" aria-label="Open screenshot 3"><img src="screens/image3.png" alt="Vibe Day screenshot 3" loading="lazy"></button>
+        <button class="shot" type="button" data-index="4" aria-label="Open screenshot 4"><img src="screens/image4.png" alt="Vibe Day screenshot 4" loading="lazy"></button>
+        <button class="shot" type="button" data-index="5" aria-label="Open screenshot 5"><img src="screens/image5.png" alt="Vibe Day screenshot 5" loading="lazy"></button>
+        <button class="shot" type="button" data-index="6" aria-label="Open screenshot 6"><img src="screens/image6.png" alt="Vibe Day screenshot 6" loading="lazy"></button>
+        <button class="shot" type="button" data-index="7" aria-label="Open screenshot 7"><img src="screens/image7.png" alt="Vibe Day screenshot 7" loading="lazy"></button>
+        <button class="shot" type="button" data-index="8" aria-label="Open screenshot 8"><img src="screens/image8.png" alt="Vibe Day screenshot 8" loading="lazy"></button>
+        <button class="shot" type="button" data-index="9" aria-label="Open screenshot 9"><img src="screens/image9.png" alt="Vibe Day screenshot 9" loading="lazy"></button>
+        <button class="shot" type="button" data-index="10" aria-label="Open screenshot 10"><img src="screens/image10.png" alt="Vibe Day screenshot 10" loading="lazy"></button>
       </div>
 
       <div class="preview-hint">Swipe to explore. Tap any screen to zoom.</div>
     </div>
 
-    <!-- Social Media (icons above text) + Contact restored -->
     <div class="social-links">
       <a class="social-item" href="https://www.instagram.com/vibedayapp" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -429,7 +392,6 @@
     </div>
   </div>
 
-  <!-- Lightbox -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Screenshot preview">
       <div class="lb-topbar">
@@ -447,7 +409,6 @@
   </div>
 
   <script>
-    // Countdown to Feb 1, 2026 (Istanbul time offset used)
     const launchDate = new Date("2026-02-01T00:00:00+03:00").getTime();
     const countdownEl = document.getElementById("countdown");
 
@@ -469,7 +430,6 @@
     tick();
     setInterval(tick, 1000);
 
-    // ===== Lightbox logic =====
     const TOTAL = 10;
     const lightbox = document.getElementById("lightbox");
     const lbImg = document.getElementById("lbImg");
@@ -480,9 +440,7 @@
 
     let currentIndex = 1;
 
-    function imgSrc(i) {
-      return `screens/image${i}.png`;
-    }
+    function imgSrc(i) { return `screens/image${i}.png`; }
 
     function openLightbox(i) {
       currentIndex = i;
@@ -497,7 +455,6 @@
       lightbox.classList.remove("open");
       lightbox.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
-      // avoid showing previous image while closed (optional)
       lbImg.src = "";
     }
 
@@ -510,7 +467,6 @@
       lbCounter.textContent = `${currentIndex} / ${TOTAL}`;
     }
 
-    // click screenshots
     document.querySelectorAll(".shot").forEach(btn => {
       btn.addEventListener("click", () => {
         const idx = Number(btn.getAttribute("data-index"));
@@ -518,17 +474,14 @@
       });
     });
 
-    // controls
     lbClose.addEventListener("click", closeLightbox);
     lbPrev.addEventListener("click", () => showNext(-1));
     lbNext.addEventListener("click", () => showNext(1));
 
-    // click outside panel closes
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) closeLightbox();
     });
 
-    // keyboard support
     document.addEventListener("keydown", (e) => {
       if (!lightbox.classList.contains("open")) return;
       if (e.key === "Escape") closeLightbox();
