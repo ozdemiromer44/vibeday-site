@@ -9,33 +9,27 @@
   <meta name="description" content="Plan your day with Vibe Day — automatically create your route and discover the best places to visit and the best restaurants, whether you’re a tourist or a local!" />
   <link rel="canonical" href="https://vibeday.site/" />
 
+  <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+  <!-- iOS Smart App Banner -->
   <meta name="apple-itunes-app" content="app-id=6757344783" />
 
+  <!-- Google Analytics (GA4) -->
+  <!-- BURAYA KENDİ MEASUREMENT ID'NI KOYACAKSIN -->
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JK7NZQYHSC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JK7NZQYHSC', {
+    anonymize_ip: true
+  });
+</script>
+
   <style>
-    .footer-links{
-  margin-top: 18px;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 18px;
-  flex-wrap: wrap;
-  font-size: 0.95rem;
-}
-
-.footer-links a{
-  color: rgba(255,255,255,0.85);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
-  padding-bottom: 2px;
-}
-
-.footer-links a:hover{
-  color: #fff;
-  border-bottom-color: rgba(255,255,255,0.6);
-}
-
-
     :root{
       --glass-bg: rgba(255,255,255,0.08);
       --glass-border: rgba(255,255,255,0.16);
@@ -55,32 +49,78 @@
 
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
       align-items: center;
       min-height: 100vh;
-
       text-align: center;
     }
 
     .container {
       width: 100%;
       max-width: 980px;
-      padding: 28px 18px 34px;
-      animation: fadeIn 1.2s ease-in-out;
+      padding: 20px 18px 92px;
       margin: 0 auto;
-      flex: 1; 
+      flex: 1;
+      animation: fadeIn 1.2s ease-in-out;
+      position: relative;
     }
 
-    /* --- HERO (mobile default: stacked) --- */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
+    /* ===== TOP BAR / LANGUAGE SELECTOR ===== */
+    .topbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+    }
+
+    .lang {
+      position: relative;
+      display: inline-flex;
       align-items: center;
-      justify-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      user-select: none;
     }
 
-    .hero-left { width: 100%; max-width: 640px; }
+    .lang-menu {
+      position: absolute;
+      right: 0;
+      top: 46px;
+      background: rgba(15,12,41,0.85);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 14px;
+      overflow: hidden;
+      display: none;
+      min-width: 170px;
+      z-index: 10;
+    }
+
+    .lang-menu.open { display: block; }
+
+    .lang-item {
+      padding: 12px 14px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .lang-item:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      margin-top: 12px;
+    }
 
     .app-icon {
       width: 84px;
@@ -100,7 +140,7 @@
       -webkit-text-fill-color: transparent;
     }
 
-    p {
+    .hero-text {
       font-size: 1.05rem;
       color: #d1d5db;
       margin: 0 auto 1.4rem;
@@ -113,13 +153,13 @@
       gap: 14px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 0.9rem;
+      margin-bottom: 0.8rem;
     }
 
     .btn {
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255,255,255,0.2);
       color: white;
       padding: 14px 22px;
       border-radius: 999px;
@@ -127,192 +167,208 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
       font-weight: 600;
       font-size: 1rem;
       user-select: none;
-      white-space: nowrap;
       justify-content: center;
     }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      background: rgba(255, 255, 255, 0.18);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.22);
-    }
-
-    .btn svg { width: 22px; height: 22px; flex: 0 0 auto; }
 
     .btn.disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
+      opacity: 0.5;
       pointer-events: none;
-      transform: none !important;
-      box-shadow: none !important;
     }
 
-    .subnote {
-      font-size: 0.95rem;
-      color: var(--muted);
-      margin: 0 0 0.8rem 0;
-      line-height: 1.5;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
     }
+  </style>
+</head>
 
-    .countdown {
-      margin-top: 0.55rem;
-      font-variant-numeric: tabular-nums;
-      color: #e5e7eb;
-    }
+<body>
+  <div class="container">
 
-    /* --- Featured screenshot (desktop only) --- */
-    .hero-right {
-      width: 100%;
-      display: none; /* shown on desktop */
-      justify-content: center;
-    }
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="lang" id="langBtn">
+        🌍 EN
+        <div class="lang-menu" id="langMenu">
+          <div class="lang-item" data-lang="en">🇬🇧 English</div>
+          <div class="lang-item" data-lang="tr">🇹🇷 Türkçe</div>
+          <div class="lang-item" data-lang="es">🇪🇸 Español</div>
+          <div class="lang-item" data-lang="fr">🇫🇷 Français</div>
+          <div class="lang-item" data-lang="de">🇩🇪 Deutsch</div>
+        </div>
+      </div>
+    </div>
 
-    .featured-card {
-      background: var(--glass-bg);
-      border: 1px solid var(--glass-border);
-      border-radius: 22px;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 22px 60px rgba(0,0,0,0.35);
-      padding: 14px;
-      width: min(360px, 100%);
-      text-align: left;
-    }
+    <!-- HERO -->
+    <div class="hero">
+      <img src="app-icon.png" alt="Vibe Day App Icon" class="app-icon" />
 
-    .featured-title {
-      color: var(--muted);
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin: 0 0 10px 6px;
-    }
+      <h1>Vibe Day</h1>
 
-    .featured-shot {
-      width: 100%;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: var(--shadow);
-      cursor: pointer;
-      background: rgba(0,0,0,0.12);
-    }
+      <p class="hero-text" id="heroText">
+        Plan your day with Vibe Day — automatically create your route and discover the best places to visit and the best restaurants, whether you’re a tourist or a local!
+      </p>
 
-    .featured-shot img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
+      <div class="store-buttons">
+        <a href="https://apps.apple.com/us/app/vibe-day/id6757344783"
+           class="btn"
+           target="_blank"
+           rel="noopener noreferrer">
+          🍎 App Store
+        </a>
 
-    /* ===== Preview Carousel ===== */
-    .preview-wrap {
-      margin: 18px auto 22px;
-      width: 100%;
-      max-width: 980px;
-      text-align: left;
-    }
+        <span class="btn disabled">Google Play (Feb 1)</span>
+      </div>
+    </div>
+    <!-- ANDROID LAUNCH NOTE -->
+    <div class="subnote" id="androidNote" style="color: var(--muted); font-size: 0.95rem; line-height: 1.5; margin-top: 6px;">
+      Android launch: <strong>Feb 1, 2026</strong>
+      <div id="countdown" style="margin-top: 0.55rem; font-variant-numeric: tabular-nums; color:#e5e7eb;" aria-live="polite"></div>
+    </div>
 
-    .preview-title {
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin: 0 0 10px 6px;
-    }
+    <!-- APP PREVIEW -->
+    <div class="preview-wrap" style="margin: 22px auto 18px; width: 100%; max-width: 980px; text-align:left;">
+      <div class="preview-title" id="previewTitle" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase; color: var(--muted); margin: 0 0 10px 6px;">
+        App Preview
+      </div>
 
-    .carousel {
+      <div class="carousel" id="carousel"
+           style="display:flex; gap:12px; overflow-x:auto; padding:10px 8px 12px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:18px; backdrop-filter: blur(10px);"
+           aria-label="App preview screenshots (swipe left/right)">
+
+        <button class="shot" type="button" data-index="1" aria-label="Open screenshot 1"
+                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
+          <img src="screens/image1.png" alt="Vibe Day screenshot 1" loading="eager" decoding="async" fetchpriority="high" style="display:block; width:100%; height:auto;">
+        </button>
+
+        <button class="shot" type="button" data-index="2" aria-label="Open screenshot 2"
+                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
+          <img src="screens/image2.png" alt="Vibe Day screenshot 2" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
+        </button>
+
+        <button class="shot" type="button" data-index="3" aria-label="Open screenshot 3"
+                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
+          <img src="screens/image3.png" alt="Vibe Day screenshot 3" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
+        </button>
+
+        <button class="shot" type="button" data-index="4" aria-label="Open screenshot 4"
+                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
+          <img src="screens/image4.png" alt="Vibe Day screenshot 4" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
+        </button>
+
+        <button class="shot" type="button" data-index="5" aria-label="Open screenshot 5"
+                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
+          <img src="screens/image5.png" alt="Vibe Day screenshot 5" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
+        </button>
+
+        <button class="shot" type="button" data-index="6" aria-label="Open screenshot 6"
+                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
+          <img src="screens/image6.png" alt="Vibe Day screenshot 6" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
+        </button>
+
+        <button class="shot" type="button" data-index="7" aria-label="Open screenshot 7"
+                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
+          <img src="screens/image7.png" alt="Vibe Day screenshot 7" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
+        </button>
+
+        <button class="shot" type="button" data-index="8" aria-label="Open screenshot 8"
+                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
+          <img src="screens/image8.png" alt="Vibe Day screenshot 8" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
+        </button>
+
+        <button class="shot" type="button" data-index="9" aria-label="Open screenshot 9"
+                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
+          <img src="screens/image9.png" alt="Vibe Day screenshot 9" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
+        </button>
+
+        <button class="shot" type="button" data-index="10" aria-label="Open screenshot 10"
+                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
+          <img src="screens/image10.png" alt="Vibe Day screenshot 10" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
+        </button>
+      </div>
+
+      <div class="preview-hint" id="previewHint" style="margin:10px 6px 0; color: var(--muted2); font-size:0.9rem;">
+        Swipe to explore. Tap any screen to zoom.
+      </div>
+
+      <!-- Desktop scroll buttons (hidden on mobile via media query in Part 3) -->
+      <div class="carousel-controls" style="display:none; justify-content:center; gap:14px; margin-top:12px;" aria-label="Carousel controls" id="carouselControls">
+        <button class="scroll-btn" id="scrollLeft" type="button" aria-label="Scroll left"
+                style="background: rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:#fff; padding:8px 14px; border-radius:999px; cursor:pointer; font-size:1rem; min-width:52px;">
+          ◀
+        </button>
+        <button class="scroll-btn" id="scrollRight" type="button" aria-label="Scroll right"
+                style="background: rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:#fff; padding:8px 14px; border-radius:999px; cursor:pointer; font-size:1rem; min-width:52px;">
+          ▶
+        </button>
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS (after App Preview) -->
+    <div class="how" style="margin: 22px auto 6px; max-width: 980px; text-align: left;">
+      <div class="how-title" id="howTitle"
+           style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase; color: var(--muted); margin: 0 0 10px 6px;">
+        How it works
+      </div>
+
+      <div class="how-lead" id="howLead"
+           style="margin: 0 6px 14px; color: #d1d5db; line-height: 1.55; max-width: 70ch;">
+        <strong>Not sure what to do?</strong>
+        Whether you're at your current location or planning a trip, Vibe Day creates a personalized route for you — or simply suggests the best places to explore.
+      </div>
+
+      <div class="how-grid"
+           style="display:grid; grid-template-columns: 1fr; gap: 12px; margin: 0 0 6px;">
+        <div class="how-card"
+             style="background: rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14); border-radius: 18px; backdrop-filter: blur(10px); padding: 14px; box-shadow: 0 16px 30px rgba(0,0,0,0.18);">
+          <div class="how-card-title" id="how1Title" style="font-weight: 700; margin-bottom: 6px;">Choose a place</div>
+          <div class="how-card-desc" id="how1Desc" style="color: var(--muted2); line-height: 1.5;">Pick your current location or your next destination.</div>
+        </div>
+
+        <div class="how-card"
+             style="background: rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14); border-radius: 18px; backdrop-filter: blur(10px); padding: 14px; box-shadow: 0 16px 30px rgba(0,0,0,0.18);">
+          <div class="how-card-title" id="how2Title" style="font-weight: 700; margin-bottom: 6px;">Set your vibe</div>
+          <div class="how-card-desc" id="how2Desc" style="color: var(--muted2); line-height: 1.5;">Tell us your mood and time — we’ll tailor the plan.</div>
+        </div>
+
+        <div class="how-card"
+             style="background: rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14); border-radius: 18px; backdrop-filter: blur(10px); padding: 14px; box-shadow: 0 16px 30px rgba(0,0,0,0.18);">
+          <div class="how-card-title" id="how3Title" style="font-weight: 700; margin-bottom: 6px;">Get your route</div>
+          <div class="how-card-desc" id="how3Desc" style="color: var(--muted2); line-height: 1.5;">Follow the route or just explore the best suggestions.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- (Hero wrapper closes here) -->
+  </div>
+
+  <!-- MOBILE STICKY CTA (App Store) -->
+  <div class="sticky-cta" id="stickyCta"
+       style="position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 1000; display:none;">
+    <a href="https://apps.apple.com/us/app/vibe-day/id6757344783"
+       id="stickyAppStore"
+       target="_blank"
+       rel="noopener noreferrer"
+       style="display:flex; align-items:center; justify-content:center; gap:10px; padding: 14px 16px; border-radius: 18px; text-decoration:none; color:#fff; font-weight: 800;
+              background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22); backdrop-filter: blur(10px);
+              box-shadow: 0 18px 45px rgba(0,0,0,0.35);">
+      🍎 <span id="stickyText">Get it on App Store</span>
+    </a>
+  </div>
+  <style>
+    /* ===== SOCIAL + FOOTER LINKS ===== */
+    .social-links{
       display: flex;
-      gap: 12px;
-      overflow-x: auto;
-      padding: 10px 8px 12px;
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 18px;
-      backdrop-filter: blur(10px);
-    }
-
-    .carousel::-webkit-scrollbar { height: 0px; }
-    .carousel { scrollbar-width: none; }
-
-    .shot {
-      scroll-snap-align: center;
-      flex: 0 0 auto;
-      width: 150px;
-      border-radius: 18px;
-      overflow: hidden;
-      cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: var(--shadow);
-      opacity: 0.86;
-      background: rgba(0,0,0,0.12);
-
-      /* button reset */
-      padding: 0;
-      margin: 0;
-      outline: none;
-      border: 1px solid rgba(255,255,255,0.18);
-      transition: transform 0.18s ease, opacity 0.18s ease;
-    }
-
-    .shot img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    /* Active card effect (set by JS) */
-    .shot.is-active {
-      opacity: 1;
-      transform: translateY(-3px) scale(1.03);
-    }
-
-    .preview-hint {
-      margin: 10px 6px 0;
-      color: var(--muted2);
-      font-size: 0.9rem;
-    }
-
-    /* Scroll buttons under carousel (desktop only) */
-    .carousel-controls {
-      display: none;
       justify-content: center;
-      gap: 14px;
-      margin-top: 12px;
-    }
-
-    .scroll-btn {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.2);
-      color: #fff;
-      padding: 8px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.2s ease, transform 0.2s ease;
-      user-select: none;
-      min-width: 52px;
-    }
-
-    .scroll-btn:hover {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-1px);
-    }
-
-    /* ===== Social ===== */
-    .social-links {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
+      gap: 26px;
       flex-wrap: wrap;
-      margin-top: 14px;
+      margin-top: 18px;
     }
 
-    .social-item {
+    .social-item{
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -326,11 +382,32 @@
       user-select: none;
     }
 
-    .social-item svg { width: 22px; height: 22px; fill: currentColor; }
+    .social-item svg{ width: 22px; height: 22px; fill: currentColor; }
+    .social-item:hover{ color: #fff; transform: translateY(-2px); }
 
-    .social-item:hover { color: #fff; transform: translateY(-2px); }
-    
-    /* ===== Lightbox ===== */
+    .footer-links{
+      margin-top: 18px;
+      padding-bottom: 8px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 0.95rem;
+    }
+
+    .footer-links a{
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      padding-bottom: 2px;
+    }
+
+    .footer-links a:hover{
+      color: #fff;
+      border-bottom-color: rgba(255,255,255,0.6);
+    }
+
+    /* ===== LIGHTBOX ===== */
     .lightbox {
       position: fixed;
       inset: 0;
@@ -341,7 +418,7 @@
       justify-content: center;
       z-index: 9999;
       padding: 16px;
-      touch-action: none; /* helps swipe */
+      touch-action: none;
     }
     .lightbox.open { display: flex; }
 
@@ -408,201 +485,61 @@
     }
     .lb-controls .lb-btn { flex: 1 1 auto; }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Mobile-first tweaks */
+    /* ===== RESPONSIVE ===== */
     @media (max-width: 600px) {
-      .container { padding-top: 22px; }
       h1 { font-size: 2.35rem; }
-      p  { font-size: 1rem; max-width: 34ch; }
-
-      .store-buttons {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .btn {
-        width: 100%;
-      }
-
-      .shot { width: 140px; }
+      .hero-text { font-size: 1rem; max-width: 34ch; }
+      .store-buttons { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; }
+      /* show sticky CTA only on mobile */
+      .sticky-cta { display: block !important; }
+      /* carousel cards a bit smaller */
+      .shot { width: 140px !important; }
+      /* App preview title center on mobile */
+      .preview-wrap { text-align: left; }
     }
-    
-    /* Desktop / Premium layout */
+
     @media (min-width: 900px) {
-      body { justify-content: center; }
-
-      .hero {
-        grid-template-columns: 1.1fr 0.9fr;
-        align-items: start;
-        justify-items: stretch;
-        text-align: left;
-      }
-
-      .hero-left {
-        max-width: 560px;
-        justify-self: start;
-      }
-
-      .hero-left .app-icon { margin-left: 0; margin-right: 0; }
-      .hero-left h1 { text-align: left; }
-      .hero-left p { margin-left: 0; margin-right: 0; }
-      .hero-left .store-buttons { justify-content: flex-start; }
-      .hero-left .subnote { text-align: left; }
-
-      .hero-right { display: flex; justify-content: flex-end; }
-
-      .preview-wrap {
-        margin-top: 28px;
-        text-align: left;
-      }
-
-      .carousel-controls { display: flex; } /* buttons appear only on desktop */
+      /* show carousel controls on desktop */
+      .carousel-controls { display: flex !important; }
+      /* how cards 3 columns */
+      .how-grid { grid-template-columns: repeat(3, 1fr) !important; }
+      /* a bit more airy */
+      .container { padding-top: 18px; }
     }
   </style>
-</head>
 
-<body>
-  <div class="container">
+  <!-- SOCIAL (icons side-by-side) -->
+  <div class="social-links">
+    <a class="social-item" href="https://www.instagram.com/vibedayapp" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.2A4.8 4.8 0 1 0 16.8 12 4.81 4.81 0 0 0 12 7.2zm0 7.9A3.1 3.1 0 1 1 15.1 12 3.1 3.1 0 0 1 12 15.1zM17.5 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/>
+      </svg>
+      Instagram
+    </a>
 
-    <!-- HERO -->
-    <div class="hero">
-      <div class="hero-left">
-        <img src="app-icon.png" alt="Vibe Day App Icon" class="app-icon" />
+    <a class="social-item" href="https://x.com/vibedayapp" target="_blank" rel="noopener noreferrer" aria-label="X">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M18.9 2H22l-7.2 8.3L23 22h-6.6l-5.2-6.5L5.6 22H2.5l7.7-8.9L1 2h6.8l4.7 6L18.9 2z"/>
+      </svg>
+      X
+    </a>
 
-        <h1>Vibe Day</h1>
+    <a class="social-item" href="https://www.tiktok.com/@appvibeday" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 2h3a5.6 5.6 0 0 0 5.6 5.6v3a8.6 8.6 0 0 1-5.6-2V15a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V2z"/>
+      </svg>
+      TikTok
+    </a>
+  </div>
 
-        <p>
-          Plan your day with Vibe Day — automatically create your route and discover the best places to visit and the best restaurants, whether you’re a tourist or a local!
-        </p>
+  <!-- Footer links (privacy + contact) -->
+  <div class="footer-links">
+    <a href="https://ozdemiromer44.github.io/VibeDay/" target="_blank" rel="noopener noreferrer" id="privacyLink">Privacy Policy</a>
+    <a href="mailto:vibedayorj@gmail.com" id="contactLink">Contact</a>
+  </div>
 
-        <div class="store-buttons">
-          <a href="https://apps.apple.com/us/app/vibe-day/id6757344783"
-             class="btn"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Download on the App Store">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.37 12.36,4.1 13,3.5Z"/>
-            </svg>
-            App Store
-          </a>
-
-          <a class="btn disabled" aria-label="Google Play coming soon">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.5,12.92 20.16,13.19L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-            </svg>
-            Google Play (Feb 1)
-          </a>
-        </div>
-
-        <div class="subnote">
-          Android launch: <strong>Feb 1, 2026</strong>
-          <div id="countdown" class="countdown" aria-live="polite"></div>
-        </div>
-      </div>
-
-      <!-- Desktop featured screenshot -->
-      <div class="hero-right">
-        <div class="featured-card">
-          <div class="featured-title">Featured</div>
-
-          <button class="featured-shot" type="button" id="featuredOpen" aria-label="Open featured screenshot">
-            <img
-              src="screens/image1.png"
-              alt="Vibe Day featured screenshot"
-              loading="eager"
-              decoding="async"
-              fetchpriority="high"
-            />
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- App Preview -->
-    <div class="preview-wrap">
-      <div class="preview-title">App Preview</div>
-
-      <div class="carousel" id="carousel" aria-label="App preview screenshots (swipe left/right)">
-        <button class="shot" type="button" data-index="1" aria-label="Open screenshot 1">
-          <img src="screens/image1.png" alt="Vibe Day screenshot 1" loading="eager" decoding="async" fetchpriority="high" />
-        </button>
-        <button class="shot" type="button" data-index="2" aria-label="Open screenshot 2">
-          <img src="screens/image2.png" alt="Vibe Day screenshot 2" loading="lazy" decoding="async" />
-        </button>
-        <button class="shot" type="button" data-index="3" aria-label="Open screenshot 3">
-          <img src="screens/image3.png" alt="Vibe Day screenshot 3" loading="lazy" decoding="async" />
-        </button>
-        <button class="shot" type="button" data-index="4" aria-label="Open screenshot 4">
-          <img src="screens/image4.png" alt="Vibe Day screenshot 4" loading="lazy" decoding="async" />
-        </button>
-        <button class="shot" type="button" data-index="5" aria-label="Open screenshot 5">
-          <img src="screens/image5.png" alt="Vibe Day screenshot 5" loading="lazy" decoding="async" />
-        </button>
-        <button class="shot" type="button" data-index="6" aria-label="Open screenshot 6">
-          <img src="screens/image6.png" alt="Vibe Day screenshot 6" loading="lazy" decoding="async" />
-        </button>
-        <button class="shot" type="button" data-index="7" aria-label="Open screenshot 7">
-          <img src="screens/image7.png" alt="Vibe Day screenshot 7" loading="lazy" decoding="async" />
-        </button>
-        <button class="shot" type="button" data-index="8" aria-label="Open screenshot 8">
-          <img src="screens/image8.png" alt="Vibe Day screenshot 8" loading="lazy" decoding="async" />
-        </button>
-        <button class="shot" type="button" data-index="9" aria-label="Open screenshot 9">
-          <img src="screens/image9.png" alt="Vibe Day screenshot 9" loading="lazy" decoding="async" />
-        </button>
-        <button class="shot" type="button" data-index="10" aria-label="Open screenshot 10">
-          <img src="screens/image10.png" alt="Vibe Day screenshot 10" loading="lazy" decoding="async" />
-        </button>
-      </div>
-
-      <div class="preview-hint">Swipe to explore. Tap any screen to zoom.</div>
-
-      <!-- Desktop scroll buttons -->
-      <div class="carousel-controls" aria-label="Carousel controls">
-        <button class="scroll-btn" id="scrollLeft" type="button" aria-label="Scroll left">◀</button>
-        <button class="scroll-btn" id="scrollRight" type="button" aria-label="Scroll right">▶</button>
-      </div>
-    </div>
-
-    <!-- Social -->
-    <div class="social-links">
-      <a class="social-item" href="https://www.instagram.com/vibedayapp" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.2A4.8 4.8 0 1 0 16.8 12 4.81 4.81 0 0 0 12 7.2zm0 7.9A3.1 3.1 0 1 1 15.1 12 3.1 3.1 0 0 1 12 15.1zM17.5 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/>
-        </svg>
-        Instagram
-      </a>
-
-      <a class="social-item" href="https://x.com/vibedayapp" target="_blank" rel="noopener noreferrer" aria-label="X">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M18.9 2H22l-7.2 8.3L23 22h-6.6l-5.2-6.5L5.6 22H2.5l7.7-8.9L1 2h6.8l4.7 6L18.9 2z"/>
-        </svg>
-        X
-      </a>
-
-      <a class="social-item" href="https://www.tiktok.com/@appvibeday" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 2h3a5.6 5.6 0 0 0 5.6 5.6v3a8.6 8.6 0 0 1-5.6-2V15a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V2z"/>
-        </svg>
-        TikTok
-      </a>
-
-      <a class="social-item" href="mailto:vibedayorj@gmail.com" aria-label="Email">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/>
-        </svg>
-        Contact
-      </a>
-    </div>
-    <div class="footer-links">
-  <a href="https://ozdemiromer44.github.io/VibeDay/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
-  <a href="mailto:vibedayorj@gmail.com">Contact</a>
-</div>
-  <!-- Lightbox -->
+  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <div class="lightbox-panel" role="dialog" aria-modal="true" aria-label="Screenshot preview">
       <div class="lb-topbar">
@@ -620,11 +557,25 @@
   </div>
 
   <script>
-    // ===== Countdown to Feb 1, 2026 (Istanbul time) =====
+    /* =============================
+       UTIL: Safe GA event
+    ============================== */
+    function gaEvent(name, params) {
+      try {
+        if (typeof gtag === "function") {
+          gtag("event", name, params || {});
+        }
+      } catch (_) {}
+    }
+
+    /* =============================
+       COUNTDOWN (Feb 1, 2026 Istanbul)
+    ============================== */
     const launchDate = new Date("2026-02-01T00:00:00+03:00").getTime();
     const countdownEl = document.getElementById("countdown");
 
     function tick() {
+      if (!countdownEl) return;
       const now = Date.now();
       const diff = launchDate - now;
 
@@ -642,7 +593,9 @@
     tick();
     setInterval(tick, 1000);
 
-    // ===== Lightbox =====
+    /* =============================
+       LIGHTBOX + CAROUSEL
+    ============================== */
     const TOTAL = 10;
     const lightbox = document.getElementById("lightbox");
     const lbImg = document.getElementById("lbImg");
@@ -650,6 +603,9 @@
     const lbClose = document.getElementById("lbClose");
     const lbPrev = document.getElementById("lbPrev");
     const lbNext = document.getElementById("lbNext");
+    const carousel = document.getElementById("carousel");
+    const scrollLeftBtn = document.getElementById("scrollLeft");
+    const scrollRightBtn = document.getElementById("scrollRight");
 
     let currentIndex = 1;
 
@@ -662,6 +618,12 @@
       lightbox.classList.add("open");
       lightbox.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
+
+      // hide sticky CTA while lightbox open
+      const sticky = document.getElementById("stickyCta");
+      if (sticky) sticky.style.display = "none";
+
+      gaEvent("open_screenshot", { index: currentIndex });
     }
 
     function closeLightbox() {
@@ -669,6 +631,12 @@
       lightbox.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
       lbImg.src = "";
+
+      // restore sticky CTA (mobile only)
+      const sticky = document.getElementById("stickyCta");
+      if (sticky && window.matchMedia("(max-width: 600px)").matches) {
+        sticky.style.display = "block";
+      }
     }
 
     function showNext(delta) {
@@ -678,9 +646,9 @@
       currentIndex = next;
       lbImg.src = imgSrc(currentIndex);
       lbCounter.textContent = `${currentIndex} / ${TOTAL}`;
+      gaEvent("navigate_screenshot", { index: currentIndex });
     }
 
-    // Open from carousel
     document.querySelectorAll(".shot").forEach(btn => {
       btn.addEventListener("click", () => {
         const idx = Number(btn.getAttribute("data-index"));
@@ -688,22 +656,14 @@
       });
     });
 
-    // Open from featured screenshot
-    const featuredOpen = document.getElementById("featuredOpen");
-    if (featuredOpen) {
-      featuredOpen.addEventListener("click", () => openLightbox(1));
-    }
-
     lbClose.addEventListener("click", closeLightbox);
     lbPrev.addEventListener("click", () => showNext(-1));
     lbNext.addEventListener("click", () => showNext(1));
 
-    // click outside panel closes
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) closeLightbox();
     });
 
-    // keyboard support
     document.addEventListener("keydown", (e) => {
       if (!lightbox.classList.contains("open")) return;
       if (e.key === "Escape") closeLightbox();
@@ -711,97 +671,244 @@
       if (e.key === "ArrowRight") showNext(1);
     });
 
-    // ===== Mobile swipe inside lightbox =====
-    let startX = null;
-    let startY = null;
-
-    function onTouchStart(e) {
+    /* Mobile swipe in lightbox */
+    let startX = null, startY = null;
+    lightbox.addEventListener("touchstart", (e) => {
+      if (!lightbox.classList.contains("open")) return;
       const t = e.changedTouches[0];
-      startX = t.clientX;
-      startY = t.clientY;
-    }
+      startX = t.clientX; startY = t.clientY;
+    }, { passive: true });
 
-    function onTouchEnd(e) {
+    lightbox.addEventListener("touchend", (e) => {
+      if (!lightbox.classList.contains("open")) return;
       if (startX === null || startY === null) return;
       const t = e.changedTouches[0];
       const dx = t.clientX - startX;
       const dy = t.clientY - startY;
 
-      // horizontal swipe threshold
-      const absX = Math.abs(dx);
-      const absY = Math.abs(dy);
-
-      if (absX > 45 && absX > absY) {
-        if (dx < 0) showNext(1);   // swipe left -> next
-        else showNext(-1);         // swipe right -> prev
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+        if (dx < 0) showNext(1);
+        else showNext(-1);
       }
-
-      startX = null;
-      startY = null;
-    }
-
-    // Attach swipe listeners only when lightbox open
-    lightbox.addEventListener("touchstart", (e) => {
-      if (!lightbox.classList.contains("open")) return;
-      onTouchStart(e);
+      startX = null; startY = null;
     }, { passive: true });
 
-    lightbox.addEventListener("touchend", (e) => {
-      if (!lightbox.classList.contains("open")) return;
-      onTouchEnd(e);
-    }, { passive: true });
-
-    // ===== Carousel scroll buttons (desktop) =====
-    const carousel = document.getElementById("carousel");
-    const scrollLeftBtn = document.getElementById("scrollLeft");
-    const scrollRightBtn = document.getElementById("scrollRight");
-
+    /* Desktop scroll buttons */
     if (carousel && scrollLeftBtn && scrollRightBtn) {
       scrollLeftBtn.addEventListener("click", () => {
         carousel.scrollBy({ left: -420, behavior: "smooth" });
+        gaEvent("carousel_scroll", { direction: "left" });
       });
       scrollRightBtn.addEventListener("click", () => {
         carousel.scrollBy({ left: 420, behavior: "smooth" });
+        gaEvent("carousel_scroll", { direction: "right" });
       });
     }
 
-    // ===== Active card effect (detect closest to center) =====
-    function updateActiveCard() {
-      if (!carousel) return;
-      const cards = Array.from(carousel.querySelectorAll(".shot"));
-      if (!cards.length) return;
+    /* =============================
+       LANGUAGE SYSTEM (EN/TR/ES/FR/DE)
+    ============================== */
+    const langBtn = document.getElementById("langBtn");
+    const langMenu = document.getElementById("langMenu");
 
-      const carouselRect = carousel.getBoundingClientRect();
-      const centerX = carouselRect.left + carouselRect.width / 2;
+    const heroText = document.getElementById("heroText");
+    const previewTitle = document.getElementById("previewTitle");
+    const previewHint = document.getElementById("previewHint");
 
-      let best = null;
-      let bestDist = Infinity;
+    const howTitle = document.getElementById("howTitle");
+    const howLead = document.getElementById("howLead");
+    const how1Title = document.getElementById("how1Title");
+    const how1Desc = document.getElementById("how1Desc");
+    const how2Title = document.getElementById("how2Title");
+    const how2Desc = document.getElementById("how2Desc");
+    const how3Title = document.getElementById("how3Title");
+    const how3Desc = document.getElementById("how3Desc");
 
-      cards.forEach(card => {
-        const r = card.getBoundingClientRect();
-        const cardCenter = r.left + r.width / 2;
-        const dist = Math.abs(centerX - cardCenter);
-        if (dist < bestDist) {
-          bestDist = dist;
-          best = card;
-        }
+    const privacyLink = document.getElementById("privacyLink");
+    const contactLink = document.getElementById("contactLink");
+
+    const stickyText = document.getElementById("stickyText");
+    const stickyAppStore = document.getElementById("stickyAppStore");
+
+    const strings = {
+      en: {
+        langLabel: "EN",
+        hero: "Plan your day with Vibe Day — automatically create your route and discover the best places to visit and the best restaurants, whether you’re a tourist or a local!",
+        previewTitle: "App Preview",
+        previewHint: "Swipe to explore. Tap any screen to zoom.",
+        howTitle: "How it works",
+        howLead: "<strong>Not sure what to do?</strong> Whether you're at your current location or planning a trip, Vibe Day creates a personalized route for you — or simply suggests the best places to explore.",
+        how1Title: "Choose a place",
+        how1Desc: "Pick your current location or your next destination.",
+        how2Title: "Set your vibe",
+        how2Desc: "Tell us your mood and time — we’ll tailor the plan.",
+        how3Title: "Get your route",
+        how3Desc: "Follow the route or just explore the best suggestions.",
+        privacy: "Privacy Policy",
+        contact: "Contact",
+        sticky: "Get it on App Store"
+      },
+      tr: {
+        langLabel: "TR",
+        hero: "Vibe Day ile gününü planla — rotanı otomatik oluştur, turist ya da yerli olarak en iyi gezilecek yerleri ve en iyi restoranları keşfet!",
+        previewTitle: "Uygulama Önizlemesi",
+        previewHint: "Kaydırarak keşfet. Herhangi bir görsele dokunarak büyüt.",
+        howTitle: "Nasıl çalışır",
+        howLead: "<strong>Ne yapacağını bilmiyor musun?</strong> Bulunduğun konumda ya da gitmek istediğin yerde Vibe Day senin için rota oluştursun — istersen sadece en iyi önerileri sunsun.",
+        how1Title: "Konum seç",
+        how1Desc: "Bulunduğun yeri ya da gideceğin destinasyonu seç.",
+        how2Title: "Vibe'ını ayarla",
+        how2Desc: "Ruh halini ve zamanını söyle — planı sana göre hazırlayalım.",
+        how3Title: "Rotanı al",
+        how3Desc: "Rotayı takip et ya da sadece önerileri keşfet.",
+        privacy: "Gizlilik",
+        contact: "İletişim",
+        sticky: "App Store'dan indir"
+      },
+      es: {
+        langLabel: "ES",
+        hero: "Planifica tu día con Vibe Day: crea tu ruta automáticamente y descubre los mejores lugares y restaurantes, tanto si eres turista como local.",
+        previewTitle: "Vista previa",
+        previewHint: "Desliza para explorar. Toca cualquier pantalla para ampliar.",
+        howTitle: "Cómo funciona",
+        howLead: "<strong>¿No sabes qué hacer?</strong> Ya sea en tu ubicación actual o planificando un viaje, Vibe Day crea una ruta personalizada — o simplemente sugiere los mejores lugares.",
+        how1Title: "Elige un lugar",
+        how1Desc: "Selecciona tu ubicación actual o tu próximo destino.",
+        how2Title: "Define tu vibe",
+        how2Desc: "Dinos tu estado de ánimo y tiempo — ajustamos el plan.",
+        how3Title: "Obtén tu ruta",
+        how3Desc: "Sigue la ruta o explora solo las mejores sugerencias.",
+        privacy: "Privacidad",
+        contact: "Contacto",
+        sticky: "Descargar en App Store"
+      },
+      fr: {
+        langLabel: "FR",
+        hero: "Planifie ta journée avec Vibe Day : crée automatiquement ton itinéraire et découvre les meilleurs lieux et restaurants, que tu sois touriste ou local.",
+        previewTitle: "Aperçu",
+        previewHint: "Fais défiler. Appuie sur une image pour zoomer.",
+        howTitle: "Comment ça marche",
+        howLead: "<strong>Tu ne sais pas quoi faire ?</strong> Sur place ou pour une prochaine destination, Vibe Day crée un itinéraire personnalisé — ou propose simplement les meilleurs endroits.",
+        how1Title: "Choisis un lieu",
+        how1Desc: "Ta position actuelle ou ta prochaine destination.",
+        how2Title: "Choisis ton vibe",
+        how2Desc: "Ton humeur et ton temps — on adapte le plan.",
+        how3Title: "Récupère ton itinéraire",
+        how3Desc: "Suis l’itinéraire ou explore seulement les suggestions.",
+        privacy: "Confidentialité",
+        contact: "Contact",
+        sticky: "Télécharger sur App Store"
+      },
+      de: {
+        langLabel: "DE",
+        hero: "Plane deinen Tag mit Vibe Day – erstelle automatisch deine Route und entdecke die besten Orte und Restaurants, egal ob Tourist oder Einheimischer.",
+        previewTitle: "App-Vorschau",
+        previewHint: "Wische zum Entdecken. Tippe zum Vergrößern.",
+        howTitle: "So funktioniert’s",
+        howLead: "<strong>Keine Idee, was du machen sollst?</strong> Ob aktueller Standort oder Reiseplanung: Vibe Day erstellt eine persönliche Route — oder empfiehlt einfach die besten Orte.",
+        how1Title: "Ort wählen",
+        how1Desc: "Aktuellen Standort oder nächstes Ziel auswählen.",
+        how2Title: "Vibe festlegen",
+        how2Desc: "Stimmung & Zeit angeben — wir passen alles an.",
+        how3Title: "Route bekommen",
+        how3Desc: "Route folgen oder nur Empfehlungen entdecken.",
+        privacy: "Datenschutz",
+        contact: "Kontakt",
+        sticky: "Im App Store holen"
+      }
+    };
+
+    function setLang(code) {
+      const s = strings[code] || strings.en;
+      localStorage.setItem("vibe_lang", code);
+
+      // button label
+      langBtn.childNodes[0].nodeValue = `🌍 ${s.langLabel} `;
+
+      // content
+      if (heroText) heroText.textContent = s.hero;
+      if (previewTitle) previewTitle.textContent = s.previewTitle;
+      if (previewHint) previewHint.textContent = s.previewHint;
+
+      if (howTitle) howTitle.textContent = s.howTitle;
+      if (howLead) howLead.innerHTML = s.howLead;
+
+      if (how1Title) how1Title.textContent = s.how1Title;
+      if (how1Desc) how1Desc.textContent = s.how1Desc;
+      if (how2Title) how2Title.textContent = s.how2Title;
+      if (how2Desc) how2Desc.textContent = s.how2Desc;
+      if (how3Title) how3Title.textContent = s.how3Title;
+      if (how3Desc) how3Desc.textContent = s.how3Desc;
+
+      if (privacyLink) privacyLink.textContent = s.privacy;
+      if (contactLink) contactLink.textContent = s.contact;
+
+      if (stickyText) stickyText.textContent = s.sticky;
+
+      gaEvent("language_change", { language: code });
+    }
+
+    // open/close menu
+    langBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      langMenu.classList.toggle("open");
+      gaEvent("language_menu_toggle", { open: langMenu.classList.contains("open") });
+    });
+
+    document.addEventListener("click", () => {
+      langMenu.classList.remove("open");
+    });
+
+    // pick language
+    document.querySelectorAll(".lang-item").forEach(item => {
+      item.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const code = item.getAttribute("data-lang");
+        langMenu.classList.remove("open");
+        setLang(code);
       });
+    });
 
-      cards.forEach(c => c.classList.remove("is-active"));
-      if (best) best.classList.add("is-active");
+    // init language
+    const saved = localStorage.getItem("vibe_lang") || "en";
+    setLang(saved);
+
+    /* =============================
+       Sticky CTA display logic + events
+    ============================== */
+    function updateStickyVisibility() {
+      const sticky = document.getElementById("stickyCta");
+      if (!sticky) return;
+
+      const isMobile = window.matchMedia("(max-width: 600px)").matches;
+      const lightboxOpen = lightbox && lightbox.classList.contains("open");
+
+      if (isMobile && !lightboxOpen) {
+        sticky.style.display = "block";
+      } else {
+        sticky.style.display = "none";
+      }
     }
 
-    // run on load + on scroll + on resize
-    window.addEventListener("load", updateActiveCard);
-    window.addEventListener("resize", updateActiveCard);
-    if (carousel) {
-      carousel.addEventListener("scroll", () => {
-        window.requestAnimationFrame(updateActiveCard);
-      }, { passive: true });
+    window.addEventListener("resize", updateStickyVisibility);
+    window.addEventListener("load", updateStickyVisibility);
 
-      // set initial position a bit nicer on desktop
-      window.requestAnimationFrame(updateActiveCard);
+    if (stickyAppStore) {
+      stickyAppStore.addEventListener("click", () => {
+        gaEvent("click_app_store", { source: "sticky" });
+      });
     }
+
+    // Track main App Store button click (hero)
+    document.querySelectorAll('a[href*="apps.apple.com"]').forEach(a => {
+      a.addEventListener("click", () => {
+        gaEvent("click_app_store", { source: "hero_or_other" });
+      });
+    });
+
+    // Track footer links
+    if (privacyLink) privacyLink.addEventListener("click", () => gaEvent("click_privacy", {}));
+    if (contactLink) contactLink.addEventListener("click", () => gaEvent("click_contact", {}));
   </script>
 </body>
 </html>
