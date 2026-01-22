@@ -1,3 +1,6 @@
+<!-- ===========================
+     index.html (PART 1 / 3)
+=========================== -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,18 +19,13 @@
   <meta name="apple-itunes-app" content="app-id=6757344783" />
 
   <!-- Google Analytics (GA4) -->
-  <!-- BURAYA KENDİ MEASUREMENT ID'NI KOYACAKSIN -->
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JK7NZQYHSC"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JK7NZQYHSC', {
-    anonymize_ip: true
-  });
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JK7NZQYHSC"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JK7NZQYHSC', { anonymize_ip: true });
+  </script>
 
   <style>
     :root{
@@ -38,9 +36,9 @@
       --shadow: 0 14px 26px rgba(0,0,0,0.22);
     }
 
-    * { box-sizing: border-box; }
+    *{ box-sizing: border-box; }
 
-    body {
+    body{
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -49,33 +47,42 @@
 
       display: flex;
       flex-direction: column;
-      align-items: center;
       min-height: 100vh;
       text-align: center;
     }
 
-    .container {
+    /* Content grows -> footer pushed to bottom */
+    .container{
       width: 100%;
       max-width: 980px;
-      padding: 20px 18px 160px;
       margin: 0 auto;
-      flex: 1;
+      flex: 1 0 auto;
+
+      padding: 18px 18px calc(190px + env(safe-area-inset-bottom));
       animation: fadeIn 1.2s ease-in-out;
       position: relative;
     }
 
-    /* ===== TOP BAR / LANGUAGE SELECTOR ===== */
-    .topbar {
-      display: flex;
-      justify-content: flex-end;
-      margin-bottom: 10px;
+    @keyframes fadeIn{
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
-    .lang {
+    /* ===== TOP BAR / LANGUAGE SELECTOR ===== */
+    .topbar{
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+
+    .lang{
       position: relative;
       display: inline-flex;
       align-items: center;
       gap: 8px;
+
       padding: 10px 12px;
       border-radius: 999px;
       background: rgba(255,255,255,0.12);
@@ -83,46 +90,43 @@
       backdrop-filter: blur(10px);
       color: #fff;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.9rem;
       user-select: none;
     }
 
-    .lang-menu {
+    .lang svg{ width: 18px; height: 18px; fill: currentColor; opacity: 0.9; }
+
+    .lang-menu{
       position: absolute;
       right: 0;
       top: 46px;
-      background: rgba(15,12,41,0.85);
+      background: rgba(15,12,41,0.88);
       border: 1px solid rgba(255,255,255,0.18);
       border-radius: 14px;
       overflow: hidden;
       display: none;
-      min-width: 170px;
-      z-index: 10;
+      min-width: 180px;
+      z-index: 20;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.35);
     }
 
-    .lang-menu.open { display: block; }
+    .lang-menu.open{ display: block; }
 
-    .lang-item {
+    .lang-item{
       padding: 12px 14px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       display: flex;
       gap: 10px;
       align-items: center;
-      color: rgba(255,255,255,0.9);
+      color: rgba(255,255,255,0.92);
+      white-space: nowrap;
     }
-
-    .lang-item:hover {
-      background: rgba(255,255,255,0.12);
-    }
+    .lang-item:hover{ background: rgba(255,255,255,0.12); }
 
     /* ===== HERO ===== */
-    .hero {
-      margin-top: 12px;
-    }
-
-    .app-icon {
+    .app-icon{
       width: 84px;
       height: 84px;
       border-radius: 22%;
@@ -131,7 +135,7 @@
       box-shadow: 0 16px 30px rgba(0,0,0,0.25);
     }
 
-    h1 {
+    h1{
       font-size: 3rem;
       margin: 0 0 0.75rem 0;
       letter-spacing: -1px;
@@ -140,23 +144,23 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .hero-text {
+    .hero-text{
       font-size: 1.05rem;
       color: #d1d5db;
-      margin: 0 auto 1.4rem;
+      margin: 0 auto 1.15rem;
       line-height: 1.55;
-      max-width: 42ch;
+      max-width: 56ch;
     }
 
-    .store-buttons {
+    .store-buttons{
       display: flex;
       gap: 14px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.7rem;
     }
 
-    .btn {
+    .btn{
       background: rgba(255,255,255,0.1);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.2);
@@ -167,216 +171,292 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-weight: 600;
+      font-weight: 800;
       font-size: 1rem;
       user-select: none;
       justify-content: center;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+      white-space: nowrap;
     }
 
-    .btn.disabled {
-      opacity: 0.5;
+    .btn:hover{
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.18);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.22);
+    }
+
+    .btn svg{ width: 22px; height: 22px; flex: 0 0 auto; }
+
+    .btn.disabled{
+      opacity: 0.55;
+      pointer-events: none;
+      cursor: not-allowed;
+      box-shadow: none !important;
+      transform: none !important;
+    }
+
+    .subnote{
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 0 0 0.8rem 0;
+      line-height: 1.5;
+    }
+
+    .countdown{
+      margin-top: 0.55rem;
+      font-variant-numeric: tabular-nums;
+      color: #e5e7eb;
+    }
+
+    /* ===== APP PREVIEW ===== */
+    .preview-wrap{
+      margin: 22px auto 10px;
+      width: 100%;
+      max-width: 980px;
+      text-align: left;
+    }
+
+    .section-title{
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 0 0 10px 6px;
+    }
+
+    .carousel{
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding: 10px 8px 12px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+    }
+
+    .carousel::-webkit-scrollbar{ height: 0px; }
+    .carousel{ scrollbar-width: none; }
+
+    .shot{
+      scroll-snap-align: center;
+      flex: 0 0 auto;
+      width: 150px;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      background: rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 0;
+      margin: 0;
+      outline: none;
+      transition: transform .18s ease, opacity .18s ease;
+      opacity: .86;
+    }
+    .shot:hover{ opacity: 1; transform: translateY(-2px) scale(1.02); }
+
+    .shot img{
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .preview-hint{
+      margin: 10px 6px 0;
+      color: var(--muted2);
+      font-size: 0.9rem;
+    }
+
+    .carousel-controls{
+      display: none;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 12px;
+    }
+    .scroll-btn{
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: #fff;
+      padding: 8px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.2s ease, transform 0.2s ease;
+      user-select: none;
+      min-width: 52px;
+    }
+    .scroll-btn:hover{
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-1px);
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .how{
+      margin: 22px auto 8px;
+      max-width: 980px;
+      text-align: left;
+    }
+
+    .how-lead{
+      margin: 0 6px 14px;
+      color: #d1d5db;
+      line-height: 1.55;
+      max-width: 78ch;
+    }
+
+    .how-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 0 0 6px;
+    }
+
+    .how-card{
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      padding: 14px;
+      box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+    }
+
+    .how-card-title{
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .how-card-desc{
+      color: var(--muted2);
+      line-height: 1.5;
+    }
+    /* ===== LIGHTBOX ===== */
+    .lightbox{
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 16px;
+      touch-action: none;
+    }
+    .lightbox.open{ display: flex; }
+
+    .lightbox-panel{
+      width: min(92vw, 520px);
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(20,20,30,0.55);
+      box-shadow: 0 22px 60px rgba(0,0,0,0.45);
+      position: relative;
+    }
+
+    .lightbox-img{
+      width: 100%;
+      height: auto;
+      display: block;
+      background: rgba(0,0,0,0.15);
+    }
+
+    .lb-topbar{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
       pointer-events: none;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
+    .lb-chip{
+      pointer-events: none;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(10px);
+      padding: 8px 10px;
+      border-radius: 999px;
     }
-  </style>
-</head>
 
-<body>
-  <div class="container">
+    .lb-btn{
+      pointer-events: auto;
+      border: 1px solid rgba(255,255,255,0.18);
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      padding: 9px 11px;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, background 0.2s ease;
+      user-select: none;
+      min-width: 92px;
+      font-weight: 800;
+    }
 
-    <!-- TOP BAR -->
-    <div class="topbar">
-      <div class="lang" id="langBtn">
-        🌍 EN
-        <div class="lang-menu" id="langMenu">
-          <div class="lang-item" data-lang="en">🇬🇧 English</div>
-          <div class="lang-item" data-lang="tr">🇹🇷 Türkçe</div>
-          <div class="lang-item" data-lang="es">🇪🇸 Español</div>
-          <div class="lang-item" data-lang="fr">🇫🇷 Français</div>
-          <div class="lang-item" data-lang="de">🇩🇪 Deutsch</div>
-        </div>
-      </div>
-    </div>
+    .lb-btn:hover{ transform: translateY(-2px); background: rgba(255,255,255,0.18); }
 
-    <!-- HERO -->
-    <div class="hero">
-      <img src="app-icon.png" alt="Vibe Day App Icon" class="app-icon" />
+    .lb-controls{
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px;
+      background: rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .lb-controls .lb-btn{ flex: 1 1 auto; }
 
-      <h1>Vibe Day</h1>
+    /* ===== STICKY CTA (mobile) ===== */
+    .sticky-cta{
+      position: fixed;
+      left: 12px;
+      right: 12px;
+      bottom: calc(12px + env(safe-area-inset-bottom));
+      z-index: 1000;
+      display: none;
+    }
 
-      <p class="hero-text" id="heroText">
-        Plan your day with Vibe Day — automatically create your route and discover the best places to visit and the best restaurants, whether you’re a tourist or a local!
-      </p>
+    .sticky-cta a{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      text-decoration: none;
+      color: #fff;
+      font-weight: 900;
 
-      <div class="store-buttons">
-        <a href="https://apps.apple.com/us/app/vibe-day/id6757344783"
-           class="btn"
-           target="_blank"
-           rel="noopener noreferrer">
-          <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
-  <path fill="currentColor"
-    d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53-1.71-2.47-3.02-7.02-1.26-10.08.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.24.41-2.51 1.05-3.11z"/>
-</svg>
-<span>App Store</span>
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.35);
+    }
 
-        </a>
+    /* ===== FOOTER (social + links) ===== */
+    .site-footer{
+      margin-top: auto;
+      width: 100%;
+      padding: 18px 0 14px;
+    }
 
-        <span class="btn disabled">Google Play (Feb 1)</span>
-      </div>
-    </div>
-    <!-- ANDROID LAUNCH NOTE -->
-    <div class="subnote" id="androidNote" style="color: var(--muted); font-size: 0.95rem; line-height: 1.5; margin-top: 6px;">
-      Android launch: <strong>Feb 1, 2026</strong>
-      <div id="countdown" style="margin-top: 0.55rem; font-variant-numeric: tabular-nums; color:#e5e7eb;" aria-live="polite"></div>
-    </div>
-
-    <!-- APP PREVIEW -->
-    <div class="preview-wrap" style="margin: 22px auto 18px; width: 100%; max-width: 980px; text-align:left;">
-      <div class="preview-title" id="previewTitle" style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase; color: var(--muted); margin: 0 0 10px 6px;">
-        App Preview
-      </div>
-
-      <div class="carousel" id="carousel"
-           style="display:flex; gap:12px; overflow-x:auto; padding:10px 8px 12px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; background: rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14); border-radius:18px; backdrop-filter: blur(10px);"
-           aria-label="App preview screenshots (swipe left/right)">
-
-        <button class="shot" type="button" data-index="1" aria-label="Open screenshot 1"
-                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
-          <img src="screens/image1.png" alt="Vibe Day screenshot 1" loading="eager" decoding="async" fetchpriority="high" style="display:block; width:100%; height:auto;">
-        </button>
-
-        <button class="shot" type="button" data-index="2" aria-label="Open screenshot 2"
-                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
-          <img src="screens/image2.png" alt="Vibe Day screenshot 2" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
-        </button>
-
-        <button class="shot" type="button" data-index="3" aria-label="Open screenshot 3"
-                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
-          <img src="screens/image3.png" alt="Vibe Day screenshot 3" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
-        </button>
-
-        <button class="shot" type="button" data-index="4" aria-label="Open screenshot 4"
-                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
-          <img src="screens/image4.png" alt="Vibe Day screenshot 4" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
-        </button>
-
-        <button class="shot" type="button" data-index="5" aria-label="Open screenshot 5"
-                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
-          <img src="screens/image5.png" alt="Vibe Day screenshot 5" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
-        </button>
-
-        <button class="shot" type="button" data-index="6" aria-label="Open screenshot 6"
-                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
-          <img src="screens/image6.png" alt="Vibe Day screenshot 6" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
-        </button>
-
-        <button class="shot" type="button" data-index="7" aria-label="Open screenshot 7"
-                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
-          <img src="screens/image7.png" alt="Vibe Day screenshot 7" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
-        </button>
-
-        <button class="shot" type="button" data-index="8" aria-label="Open screenshot 8"
-                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
-          <img src="screens/image8.png" alt="Vibe Day screenshot 8" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
-        </button>
-
-        <button class="shot" type="button" data-index="9" aria-label="Open screenshot 9"
-                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
-          <img src="screens/image9.png" alt="Vibe Day screenshot 9" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
-        </button>
-
-        <button class="shot" type="button" data-index="10" aria-label="Open screenshot 10"
-                style="scroll-snap-align:center; flex:0 0 auto; width:150px; border-radius:18px; overflow:hidden; cursor:pointer; box-shadow: var(--shadow); background: rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.18); padding:0; margin:0; outline:none; transition: transform .18s ease, opacity .18s ease; opacity:.86;">
-          <img src="screens/image10.png" alt="Vibe Day screenshot 10" loading="lazy" decoding="async" style="display:block; width:100%; height:auto;">
-        </button>
-      </div>
-
-      <div class="preview-hint" id="previewHint" style="margin:10px 6px 0; color: var(--muted2); font-size:0.9rem;">
-        Swipe to explore. Tap any screen to zoom.
-      </div>
-
-      <!-- Desktop scroll buttons (hidden on mobile via media query in Part 3) -->
-      <div class="carousel-controls" style="display:none; justify-content:center; gap:14px; margin-top:12px;" aria-label="Carousel controls" id="carouselControls">
-        <button class="scroll-btn" id="scrollLeft" type="button" aria-label="Scroll left"
-                style="background: rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:#fff; padding:8px 14px; border-radius:999px; cursor:pointer; font-size:1rem; min-width:52px;">
-          ◀
-        </button>
-        <button class="scroll-btn" id="scrollRight" type="button" aria-label="Scroll right"
-                style="background: rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); color:#fff; padding:8px 14px; border-radius:999px; cursor:pointer; font-size:1rem; min-width:52px;">
-          ▶
-        </button>
-      </div>
-    </div>
-
-    <!-- HOW IT WORKS (after App Preview) -->
-    <div class="how" style="margin: 22px auto 6px; max-width: 980px; text-align: left;">
-      <div class="how-title" id="howTitle"
-           style="font-size:0.9rem; letter-spacing:1px; text-transform:uppercase; color: var(--muted); margin: 0 0 10px 6px;">
-        How it works
-      </div>
-
-      <div class="how-lead" id="howLead"
-           style="margin: 0 6px 14px; color: #d1d5db; line-height: 1.55; max-width: 70ch;">
-        <strong>Not sure what to do?</strong>
-        Whether you're at your current location or planning a trip, Vibe Day creates a personalized route for you — or simply suggests the best places to explore.
-      </div>
-
-      <div class="how-grid"
-           style="display:grid; grid-template-columns: 1fr; gap: 12px; margin: 0 0 6px;">
-        <div class="how-card"
-             style="background: rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14); border-radius: 18px; backdrop-filter: blur(10px); padding: 14px; box-shadow: 0 16px 30px rgba(0,0,0,0.18);">
-          <div class="how-card-title" id="how1Title" style="font-weight: 700; margin-bottom: 6px;">Choose a place</div>
-          <div class="how-card-desc" id="how1Desc" style="color: var(--muted2); line-height: 1.5;">Pick your current location or your next destination.</div>
-        </div>
-
-        <div class="how-card"
-             style="background: rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14); border-radius: 18px; backdrop-filter: blur(10px); padding: 14px; box-shadow: 0 16px 30px rgba(0,0,0,0.18);">
-          <div class="how-card-title" id="how2Title" style="font-weight: 700; margin-bottom: 6px;">Set your vibe</div>
-          <div class="how-card-desc" id="how2Desc" style="color: var(--muted2); line-height: 1.5;">Tell us your mood and time — we’ll tailor the plan.</div>
-        </div>
-
-        <div class="how-card"
-             style="background: rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14); border-radius: 18px; backdrop-filter: blur(10px); padding: 14px; box-shadow: 0 16px 30px rgba(0,0,0,0.18);">
-          <div class="how-card-title" id="how3Title" style="font-weight: 700; margin-bottom: 6px;">Get your route</div>
-          <div class="how-card-desc" id="how3Desc" style="color: var(--muted2); line-height: 1.5;">Follow the route or just explore the best suggestions.</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- (Hero wrapper closes here) -->
-  </div>
-
-  <!-- MOBILE STICKY CTA (App Store) -->
-  <div class="sticky-cta" id="stickyCta"
-       style="position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom));
- z-index: 1000; display:none;">
-    <a href="https://apps.apple.com/us/app/vibe-day/id6757344783"
-       id="stickyAppStore"
-       target="_blank"
-       rel="noopener noreferrer"
-       style="display:flex; align-items:center; justify-content:center; gap:10px; padding: 14px 16px; border-radius: 18px; text-decoration:none; color:#fff; font-weight: 800;
-              background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.22); backdrop-filter: blur(10px);
-              box-shadow: 0 18px 45px rgba(0,0,0,0.35);">
-      <svg viewBox="0 0 24 24" aria-hidden="true" width="22" height="22">
-  <path fill="currentColor"
-    d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53-1.71-2.47-3.02-7.02-1.26-10.08.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.24.41-2.51 1.05-3.11z"/>
-</svg>
-<span id="stickyText">Get it on App Store</span>
-
-    </a>
-  </div>
-  <style>
-    /* ===== SOCIAL + FOOTER LINKS ===== */
     .social-links{
       display: flex;
       justify-content: center;
       gap: 26px;
       flex-wrap: wrap;
-      margin-top: 18px;
+      margin-top: 6px;
     }
 
     .social-item{
@@ -391,13 +471,14 @@
       font-size: 0.82rem;
       transition: color 0.25s ease, transform 0.25s ease;
       user-select: none;
+      min-width: 72px;
     }
 
     .social-item svg{ width: 22px; height: 22px; fill: currentColor; }
     .social-item:hover{ color: #fff; transform: translateY(-2px); }
 
     .footer-links{
-      margin-top: 18px;
+      margin-top: 16px;
       padding-bottom: 8px;
       display: flex;
       justify-content: center;
@@ -418,136 +499,190 @@
       border-bottom-color: rgba(255,255,255,0.6);
     }
 
-    /* ===== LIGHTBOX ===== */
-    .lightbox {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.75);
-      backdrop-filter: blur(8px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-      padding: 16px;
-      touch-action: none;
-    }
-    .lightbox.open { display: flex; }
-
-    .lightbox-panel {
-      width: min(92vw, 520px);
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(20,20,30,0.55);
-      box-shadow: 0 22px 60px rgba(0,0,0,0.45);
-      position: relative;
-    }
-
-    .lightbox-img { width: 100%; height: auto; display: block; background: rgba(0,0,0,0.15); }
-
-    .lb-topbar {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      pointer-events: none;
-    }
-
-    .lb-chip {
-      pointer-events: none;
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.85);
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.18);
-      backdrop-filter: blur(10px);
-      padding: 8px 10px;
-      border-radius: 999px;
-    }
-
-    .lb-btn {
-      pointer-events: auto;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(255,255,255,0.12);
-      color: #fff;
-      padding: 9px 11px;
-      border-radius: 999px;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.2s ease, background 0.2s ease;
-      user-select: none;
-      min-width: 92px;
-    }
-
-    .lb-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,0.18); }
-
-    .lb-controls {
-      display: flex;
-      justify-content: space-between;
-      gap: 10px;
-      padding: 12px;
-      background: rgba(255,255,255,0.06);
-      border-top: 1px solid rgba(255,255,255,0.12);
-    }
-    .lb-controls .lb-btn { flex: 1 1 auto; }
-
     /* ===== RESPONSIVE ===== */
-    @media (max-width: 600px) {
-      h1 { font-size: 2.35rem; }
-      .hero-text { font-size: 1rem; max-width: 34ch; }
-      .store-buttons { flex-direction: column; align-items: stretch; }
-      .btn { width: 100%; }
+    @media (max-width: 600px){
+      h1{ font-size: 2.35rem; }
+      .hero-text{ font-size: 1rem; max-width: 38ch; }
+
+      .store-buttons{
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .btn{ width: 100%; }
+
+      .shot{ width: 140px; }
+
       /* show sticky CTA only on mobile */
-      .sticky-cta { display: block !important; }
-      /* carousel cards a bit smaller */
-      .shot { width: 140px !important; }
-      /* App preview title center on mobile */
-      .preview-wrap { text-align: left; }
+      .sticky-cta{ display: block; }
+
+      /* social MUST stay side-by-side; allow horizontal scroll */
+      .social-links{
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        justify-content: center;
+        gap: 18px;
+        padding: 0 8px;
+      }
+      .social-links::-webkit-scrollbar{ height: 0; }
+      .social-links{ scrollbar-width: none; }
     }
 
-    @media (min-width: 900px) {
-      /* show carousel controls on desktop */
-      .carousel-controls { display: flex !important; }
-      /* how cards 3 columns */
-      .how-grid { grid-template-columns: repeat(3, 1fr) !important; }
-      /* a bit more airy */
-      .container { padding-top: 18px; }
+    @media (min-width: 900px){
+      .carousel-controls{ display: flex; }
+      .how-grid{ grid-template-columns: repeat(3, 1fr); }
     }
   </style>
+</head>
 
-  <!-- SOCIAL (icons side-by-side) -->
-  <div class="social-links">
-    <a class="social-item" href="https://www.instagram.com/vibedayapp" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+<body>
+  <div class="container">
+
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="lang" id="langBtn" aria-label="Language selector" role="button" tabindex="0">
+        <span id="langLabel">EN</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 10l5 5 5-5z"></path>
+        </svg>
+
+        <div class="lang-menu" id="langMenu" role="menu" aria-label="Language menu">
+          <div class="lang-item" data-lang="en" role="menuitem">English</div>
+          <div class="lang-item" data-lang="tr" role="menuitem">Türkçe</div>
+          <div class="lang-item" data-lang="es" role="menuitem">Español</div>
+          <div class="lang-item" data-lang="fr" role="menuitem">Français</div>
+          <div class="lang-item" data-lang="de" role="menuitem">Deutsch</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HERO -->
+    <img src="app-icon.png" alt="Vibe Day App Icon" class="app-icon" />
+    <h1>Vibe Day</h1>
+
+    <p class="hero-text" id="heroText">
+      Plan your day with Vibe Day — automatically create your route and discover the best places to visit and the best restaurants, whether you’re a tourist or a local!
+    </p>
+
+    <div class="store-buttons">
+      <a href="https://apps.apple.com/us/app/vibe-day/id6757344783"
+         class="btn"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Download on the App Store"
+         id="appStoreBtn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor"
+            d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53-1.71-2.47-3.02-7.02-1.26-10.08.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.24.41-2.51 1.05-3.11z"/>
+        </svg>
+        <span>App Store</span>
+      </a>
+
+      <span class="btn disabled" aria-label="Google Play coming soon">Google Play (Feb 1)</span>
+    </div>
+
+    <div class="subnote" id="androidNote">
+      Android launch: <strong>Feb 1, 2026</strong>
+      <div id="countdown" class="countdown" aria-live="polite"></div>
+    </div>
+
+    <!-- APP PREVIEW -->
+    <div class="preview-wrap">
+      <div class="section-title" id="previewTitle">App Preview</div>
+
+      <div class="carousel" id="carousel" aria-label="App preview screenshots (swipe left/right)">
+        <button class="shot" type="button" data-index="1" aria-label="Open screenshot 1"><img src="screens/image1.png" alt="Vibe Day screenshot 1" loading="eager" decoding="async" fetchpriority="high"></button>
+        <button class="shot" type="button" data-index="2" aria-label="Open screenshot 2"><img src="screens/image2.png" alt="Vibe Day screenshot 2" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" data-index="3" aria-label="Open screenshot 3"><img src="screens/image3.png" alt="Vibe Day screenshot 3" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" data-index="4" aria-label="Open screenshot 4"><img src="screens/image4.png" alt="Vibe Day screenshot 4" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" data-index="5" aria-label="Open screenshot 5"><img src="screens/image5.png" alt="Vibe Day screenshot 5" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" data-index="6" aria-label="Open screenshot 6"><img src="screens/image6.png" alt="Vibe Day screenshot 6" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" data-index="7" aria-label="Open screenshot 7"><img src="screens/image7.png" alt="Vibe Day screenshot 7" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" data-index="8" aria-label="Open screenshot 8"><img src="screens/image8.png" alt="Vibe Day screenshot 8" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" data-index="9" aria-label="Open screenshot 9"><img src="screens/image9.png" alt="Vibe Day screenshot 9" loading="lazy" decoding="async"></button>
+        <button class="shot" type="button" data-index="10" aria-label="Open screenshot 10"><img src="screens/image10.png" alt="Vibe Day screenshot 10" loading="lazy" decoding="async"></button>
+      </div>
+
+      <div class="preview-hint" id="previewHint">Swipe to explore. Tap any screen to zoom.</div>
+
+      <div class="carousel-controls" aria-label="Carousel controls">
+        <button class="scroll-btn" id="scrollLeft" type="button" aria-label="Scroll left">◀</button>
+        <button class="scroll-btn" id="scrollRight" type="button" aria-label="Scroll right">▶</button>
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="how">
+      <div class="section-title" id="howTitle">How it works</div>
+      <div class="how-lead" id="howLead">
+        <strong>Not sure what to do?</strong> Whether you're at your current location or planning a trip,
+        Vibe Day creates a personalized route for you — or simply suggests the best places to explore.
+      </div>
+
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="how-card-title" id="how1Title">Choose a place</div>
+          <div class="how-card-desc" id="how1Desc">Pick your current location or your next destination.</div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-card-title" id="how2Title">Set your vibe</div>
+          <div class="how-card-desc" id="how2Desc">Tell us your mood and time — we’ll tailor the plan.</div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-card-title" id="how3Title">Get your route</div>
+          <div class="how-card-desc" id="how3Desc">Follow the route or just explore the best suggestions.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- FOOTER (always at bottom) -->
+  <footer class="site-footer" id="siteFooter">
+    <div class="social-links">
+      <a class="social-item" href="https://www.instagram.com/vibedayapp" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.2A4.8 4.8 0 1 0 16.8 12 4.81 4.81 0 0 0 12 7.2zm0 7.9A3.1 3.1 0 1 1 15.1 12 3.1 3.1 0 0 1 12 15.1zM17.5 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/>
+        </svg>
+        Instagram
+      </a>
+
+      <a class="social-item" href="https://x.com/vibedayapp" target="_blank" rel="noopener noreferrer" aria-label="X">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M18.9 2H22l-7.2 8.3L23 22h-6.6l-5.2-6.5L5.6 22H2.5l7.7-8.9L1 2h6.8l4.7 6L18.9 2z"/>
+        </svg>
+        X
+      </a>
+
+      <a class="social-item" href="https://www.tiktok.com/@appvibeday" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2h3a5.6 5.6 0 0 0 5.6 5.6v3a8.6 8.6 0 0 1-5.6-2V15a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V2z"/>
+        </svg>
+        TikTok
+      </a>
+    </div>
+
+    <div class="footer-links">
+      <a href="https://ozdemiromer44.github.io/VibeDay/" target="_blank" rel="noopener noreferrer" id="privacyLink">Privacy Policy</a>
+      <a href="mailto:vibedayorj@gmail.com" id="contactLink">Contact</a>
+    </div>
+  </footer>
+
+  <!-- MOBILE STICKY CTA -->
+  <div class="sticky-cta" id="stickyCta">
+    <a href="https://apps.apple.com/us/app/vibe-day/id6757344783"
+       target="_blank"
+       rel="noopener noreferrer"
+       id="stickyAppStore"
+       aria-label="Get it on App Store">
       <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h10zm-5 3.2A4.8 4.8 0 1 0 16.8 12 4.81 4.81 0 0 0 12 7.2zm0 7.9A3.1 3.1 0 1 1 15.1 12 3.1 3.1 0 0 1 12 15.1zM17.5 6a1 1 0 1 0 1 1 1 1 0 0 0-1-1z"/>
+        <path fill="currentColor"
+          d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53-1.71-2.47-3.02-7.02-1.26-10.08.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.24.41-2.51 1.05-3.11z"/>
       </svg>
-      Instagram
+      <span id="stickyText">Get it on App Store</span>
     </a>
-
-    <a class="social-item" href="https://x.com/vibedayapp" target="_blank" rel="noopener noreferrer" aria-label="X">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M18.9 2H22l-7.2 8.3L23 22h-6.6l-5.2-6.5L5.6 22H2.5l7.7-8.9L1 2h6.8l4.7 6L18.9 2z"/>
-      </svg>
-      X
-    </a>
-
-    <a class="social-item" href="https://www.tiktok.com/@appvibeday" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-      <svg viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 2h3a5.6 5.6 0 0 0 5.6 5.6v3a8.6 8.6 0 0 1-5.6-2V15a6 6 0 1 1-6-6v3a3 3 0 1 0 3 3V2z"/>
-      </svg>
-      TikTok
-    </a>
-  </div>
-
-  <!-- Footer links (privacy + contact) -->
-  <div class="footer-links">
-    <a href="https://ozdemiromer44.github.io/VibeDay/" target="_blank" rel="noopener noreferrer" id="privacyLink">Privacy Policy</a>
-    <a href="mailto:vibedayorj@gmail.com" id="contactLink">Contact</a>
   </div>
 
   <!-- LIGHTBOX -->
@@ -566,17 +701,17 @@
       </div>
     </div>
   </div>
-
+<!-- ===========================
+     index.html (PART 3 / 3)
+=========================== -->
   <script>
     /* =============================
-       UTIL: Safe GA event
+       GA safe event helper
     ============================== */
-    function gaEvent(name, params) {
-      try {
-        if (typeof gtag === "function") {
-          gtag("event", name, params || {});
-        }
-      } catch (_) {}
+    function gaEvent(name, params){
+      try{
+        if (typeof gtag === "function") gtag("event", name, params || {});
+      } catch(_){}
     }
 
     /* =============================
@@ -585,12 +720,12 @@
     const launchDate = new Date("2026-02-01T00:00:00+03:00").getTime();
     const countdownEl = document.getElementById("countdown");
 
-    function tick() {
+    function tick(){
       if (!countdownEl) return;
       const now = Date.now();
       const diff = launchDate - now;
 
-      if (diff <= 0) {
+      if (diff <= 0){
         countdownEl.textContent = "Android is now available on Google Play!";
         return;
       }
@@ -605,7 +740,25 @@
     setInterval(tick, 1000);
 
     /* =============================
-       LIGHTBOX + CAROUSEL
+       CAROUSEL CONTROLS (desktop)
+    ============================== */
+    const carousel = document.getElementById("carousel");
+    const scrollLeftBtn = document.getElementById("scrollLeft");
+    const scrollRightBtn = document.getElementById("scrollRight");
+
+    if (carousel && scrollLeftBtn && scrollRightBtn){
+      scrollLeftBtn.addEventListener("click", () => {
+        carousel.scrollBy({ left: -420, behavior: "smooth" });
+        gaEvent("carousel_scroll", { direction: "left" });
+      });
+      scrollRightBtn.addEventListener("click", () => {
+        carousel.scrollBy({ left: 420, behavior: "smooth" });
+        gaEvent("carousel_scroll", { direction: "right" });
+      });
+    }
+
+    /* =============================
+       LIGHTBOX
     ============================== */
     const TOTAL = 10;
     const lightbox = document.getElementById("lightbox");
@@ -614,15 +767,12 @@
     const lbClose = document.getElementById("lbClose");
     const lbPrev = document.getElementById("lbPrev");
     const lbNext = document.getElementById("lbNext");
-    const carousel = document.getElementById("carousel");
-    const scrollLeftBtn = document.getElementById("scrollLeft");
-    const scrollRightBtn = document.getElementById("scrollRight");
 
     let currentIndex = 1;
 
-    function imgSrc(i) { return `screens/image${i}.png`; }
+    function imgSrc(i){ return `screens/image${i}.png`; }
 
-    function openLightbox(i) {
+    function openLightbox(i){
       currentIndex = i;
       lbImg.src = imgSrc(currentIndex);
       lbCounter.textContent = `${currentIndex} / ${TOTAL}`;
@@ -637,20 +787,16 @@
       gaEvent("open_screenshot", { index: currentIndex });
     }
 
-    function closeLightbox() {
+    function closeLightbox(){
       lightbox.classList.remove("open");
       lightbox.setAttribute("aria-hidden", "true");
       document.body.style.overflow = "";
       lbImg.src = "";
 
-      // restore sticky CTA (mobile only)
-      const sticky = document.getElementById("stickyCta");
-      if (sticky && window.matchMedia("(max-width: 600px)").matches) {
-        sticky.style.display = "block";
-      }
+      updateStickyVisibility();
     }
 
-    function showNext(delta) {
+    function showNext(delta){
       let next = currentIndex + delta;
       if (next < 1) next = TOTAL;
       if (next > TOTAL) next = 1;
@@ -682,7 +828,7 @@
       if (e.key === "ArrowRight") showNext(1);
     });
 
-    /* Mobile swipe in lightbox */
+    // Mobile swipe in lightbox
     let startX = null, startY = null;
     lightbox.addEventListener("touchstart", (e) => {
       if (!lightbox.classList.contains("open")) return;
@@ -693,34 +839,24 @@
     lightbox.addEventListener("touchend", (e) => {
       if (!lightbox.classList.contains("open")) return;
       if (startX === null || startY === null) return;
+
       const t = e.changedTouches[0];
       const dx = t.clientX - startX;
       const dy = t.clientY - startY;
 
-      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)) {
+      if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy)){
         if (dx < 0) showNext(1);
         else showNext(-1);
       }
       startX = null; startY = null;
     }, { passive: true });
 
-    /* Desktop scroll buttons */
-    if (carousel && scrollLeftBtn && scrollRightBtn) {
-      scrollLeftBtn.addEventListener("click", () => {
-        carousel.scrollBy({ left: -420, behavior: "smooth" });
-        gaEvent("carousel_scroll", { direction: "left" });
-      });
-      scrollRightBtn.addEventListener("click", () => {
-        carousel.scrollBy({ left: 420, behavior: "smooth" });
-        gaEvent("carousel_scroll", { direction: "right" });
-      });
-    }
-
     /* =============================
-       LANGUAGE SYSTEM (EN/TR/ES/FR/DE)
+       LANGUAGE SYSTEM
     ============================== */
     const langBtn = document.getElementById("langBtn");
     const langMenu = document.getElementById("langMenu");
+    const langLabel = document.getElementById("langLabel");
 
     const heroText = document.getElementById("heroText");
     const previewTitle = document.getElementById("previewTitle");
@@ -737,9 +873,7 @@
 
     const privacyLink = document.getElementById("privacyLink");
     const contactLink = document.getElementById("contactLink");
-
     const stickyText = document.getElementById("stickyText");
-    const stickyAppStore = document.getElementById("stickyAppStore");
 
     const strings = {
       en: {
@@ -829,21 +963,17 @@
       }
     };
 
-    function setLang(code) {
+    function setLang(code){
       const s = strings[code] || strings.en;
       localStorage.setItem("vibe_lang", code);
 
-      // button label
-      langBtn.childNodes[0].nodeValue = `🌍 ${s.langLabel} `;
-
-      // content
+      if (langLabel) langLabel.textContent = s.langLabel;
       if (heroText) heroText.textContent = s.hero;
       if (previewTitle) previewTitle.textContent = s.previewTitle;
       if (previewHint) previewHint.textContent = s.previewHint;
 
       if (howTitle) howTitle.textContent = s.howTitle;
       if (howLead) howLead.innerHTML = s.howLead;
-
       if (how1Title) how1Title.textContent = s.how1Title;
       if (how1Desc) how1Desc.textContent = s.how1Desc;
       if (how2Title) how2Title.textContent = s.how2Title;
@@ -853,24 +983,31 @@
 
       if (privacyLink) privacyLink.textContent = s.privacy;
       if (contactLink) contactLink.textContent = s.contact;
-
       if (stickyText) stickyText.textContent = s.sticky;
 
       gaEvent("language_change", { language: code });
     }
 
     // open/close menu
-    langBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
+    function toggleMenu(){
       langMenu.classList.toggle("open");
       gaEvent("language_menu_toggle", { open: langMenu.classList.contains("open") });
+    }
+
+    langBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      toggleMenu();
     });
 
-    document.addEventListener("click", () => {
-      langMenu.classList.remove("open");
+    langBtn.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        toggleMenu();
+      }
     });
 
-    // pick language
+    document.addEventListener("click", () => langMenu.classList.remove("open"));
+
     document.querySelectorAll(".lang-item").forEach(item => {
       item.addEventListener("click", (e) => {
         e.stopPropagation();
@@ -880,44 +1017,58 @@
       });
     });
 
-    // init language
     const saved = localStorage.getItem("vibe_lang") || "en";
     setLang(saved);
 
     /* =============================
-       Sticky CTA display logic + events
+       STICKY VISIBILITY + FOOTER DETECT
     ============================== */
-    function updateStickyVisibility() {
-      const sticky = document.getElementById("stickyCta");
-      if (!sticky) return;
+    const stickyEl = document.getElementById("stickyCta");
+    const footerEl = document.getElementById("siteFooter");
+
+    function updateStickyVisibility(){
+      if (!stickyEl) return;
 
       const isMobile = window.matchMedia("(max-width: 600px)").matches;
       const lightboxOpen = lightbox && lightbox.classList.contains("open");
 
-      if (isMobile && !lightboxOpen) {
-        sticky.style.display = "block";
+      if (isMobile && !lightboxOpen){
+        stickyEl.style.display = "block";
       } else {
-        sticky.style.display = "none";
+        stickyEl.style.display = "none";
       }
     }
 
     window.addEventListener("resize", updateStickyVisibility);
     window.addEventListener("load", updateStickyVisibility);
+    updateStickyVisibility();
 
-    if (stickyAppStore) {
-      stickyAppStore.addEventListener("click", () => {
-        gaEvent("click_app_store", { source: "sticky" });
-      });
+    // Footer visible => hide sticky CTA (prevents covering)
+    if (footerEl && stickyEl){
+      const io = new IntersectionObserver((entries) => {
+        const footerVisible = entries[0].isIntersecting;
+        if (footerVisible){
+          stickyEl.style.display = "none";
+        } else {
+          updateStickyVisibility();
+        }
+      }, { threshold: 0.01 });
+
+      io.observe(footerEl);
     }
 
-    // Track main App Store button click (hero)
-    document.querySelectorAll('a[href*="apps.apple.com"]').forEach(a => {
-      a.addEventListener("click", () => {
-        gaEvent("click_app_store", { source: "hero_or_other" });
-      });
-    });
+    /* =============================
+       CLICK TRACKING
+    ============================== */
+    const appStoreBtn = document.getElementById("appStoreBtn");
+    const stickyAppStore = document.getElementById("stickyAppStore");
 
-    // Track footer links
+    if (appStoreBtn){
+      appStoreBtn.addEventListener("click", () => gaEvent("click_app_store", { source: "hero" }));
+    }
+    if (stickyAppStore){
+      stickyAppStore.addEventListener("click", () => gaEvent("click_app_store", { source: "sticky" }));
+    }
     if (privacyLink) privacyLink.addEventListener("click", () => gaEvent("click_privacy", {}));
     if (contactLink) contactLink.addEventListener("click", () => gaEvent("click_contact", {}));
   </script>
