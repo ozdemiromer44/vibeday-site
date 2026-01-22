@@ -57,7 +57,7 @@
     .container {
       width: 100%;
       max-width: 980px;
-      padding: 20px 18px 92px;
+      padding: 20px 18px 160px;
       margin: 0 auto;
       flex: 1;
       animation: fadeIn 1.2s ease-in-out;
@@ -352,7 +352,8 @@
 
   <!-- MOBILE STICKY CTA (App Store) -->
   <div class="sticky-cta" id="stickyCta"
-       style="position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 1000; display:none;">
+       style="position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom));
+ z-index: 1000; display:none;">
     <a href="https://apps.apple.com/us/app/vibe-day/id6757344783"
        id="stickyAppStore"
        target="_blank"
