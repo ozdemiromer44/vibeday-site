@@ -9,7 +9,7 @@
   <title>Vibe Day - Plan Your Day!</title>
 
   <!-- SEO (NO Open Graph) -->
-  <meta name="description" content="Plan your day with Vibe Day — automatically create your route and discover the best places to visit and the best restaurants, whether you’re a tourist or a local!" />
+  <meta name="description" content="Plan your day in minutes — pick your vibe and time, get a food + discovery route." />
   <link rel="canonical" href="https://vibeday.site/" />
 
   <!-- Favicon -->
@@ -587,7 +587,9 @@
     <h1>Vibe Day</h1>
 
     <p class="hero-text" id="heroText">
-      Plan your day with Vibe Day — automatically create your route and discover the best places to visit and the best restaurants, whether you’re a tourist or a local!
+      
+      Plan your day in minutes — pick your vibe and time, get a food + discovery route.
+    
     </p>
 
     <div class="store-buttons">
@@ -601,15 +603,55 @@
           <path fill="currentColor"
             d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53-1.71-2.47-3.02-7.02-1.26-10.08.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.24.41-2.51 1.05-3.11z"/>
         </svg>
-        <span>App Store</span>
+        <span id="appStoreText">App Store</span>
       </a>
 
-      <span class="btn disabled" aria-label="Google Play coming soon">Google Play (Feb 1)</span>
+      <!-- TODO: Update Google Play URL if needed -->
+      <a href="https://play.google.com/store/apps/details?id=com.omer.vibe_day"
+         class="btn"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Get it on Google Play"
+         id="googlePlayBtn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path fill="currentColor" d="M8 5v14l11-7z"/>
+        </svg>
+        <span id="googlePlayText">Google Play</span>
+      </a>
     </div>
 
-    <div class="subnote" id="androidNote">
-      Android launch: <strong>Feb 1, 2026</strong>
-      <div id="countdown" class="countdown" aria-live="polite"></div>
+</div>
+
+    <!-- FEATURES -->
+    <div class="preview-wrap">
+      <div class="section-title" id="featuresTitle">Features</div>
+
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="how-card-title" id="feature1Title">Vibe-based routes</div>
+          <div class="how-card-desc" id="feature1Desc">Pick your mood and time — get a route that fits your day.</div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-card-title" id="feature2Title">Food + discovery in one plan</div>
+          <div class="how-card-desc" id="feature2Desc">Great places to eat, plus spots worth exploring — along the way.</div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-card-title" id="feature3Title">Smart stop ordering</div>
+          <div class="how-card-desc" id="feature3Desc">Stops are arranged in a smooth flow for your time.</div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-card-title" id="feature4Title">Follow the route or explore freely</div>
+          <div class="how-card-desc" id="feature4Desc">Stick to the route — or just browse the best suggestions.</div>
+        </div>
+
+        <div class="how-card">
+          <div class="how-card-title" id="feature5Title">Save and share plans</div>
+          <div class="how-card-desc" id="feature5Desc">Keep your favorites and share a ready-to-go route.</div>
+        </div>
+      </div>
     </div>
 
     <!-- APP PREVIEW -->
@@ -739,33 +781,7 @@
         if (typeof gtag === "function") gtag("event", name, params || {});
       } catch(_){}
     }
-
-    /* =============================
-       COUNTDOWN (Feb 1, 2026 Istanbul)
-    ============================== */
-    const launchDate = new Date("2026-02-01T00:00:00+03:00").getTime();
-    const countdownEl = document.getElementById("countdown");
-
-    function tick(){
-      if (!countdownEl) return;
-      const now = Date.now();
-      const diff = launchDate - now;
-
-      if (diff <= 0){
-        countdownEl.textContent = "Android is now available on Google Play!";
-        return;
-      }
-      const s = Math.floor(diff / 1000);
-      const d = Math.floor(s / 86400);
-      const h = Math.floor((s % 86400) / 3600);
-      const m = Math.floor((s % 3600) / 60);
-      const sec = s % 60;
-      countdownEl.textContent = `Launch in ${d}d ${h}h ${m}m ${sec}s`;
-    }
-    tick();
-    setInterval(tick, 1000);
-
-    /* =============================
+/* =============================
        CAROUSEL CONTROLS (desktop)
     ============================== */
     const carousel = document.getElementById("carousel");
@@ -888,6 +904,21 @@
     const previewTitle = document.getElementById("previewTitle");
     const previewHint = document.getElementById("previewHint");
 
+
+    const featuresTitle = document.getElementById("featuresTitle");
+    const feature1Title = document.getElementById("feature1Title");
+    const feature1Desc = document.getElementById("feature1Desc");
+    const feature2Title = document.getElementById("feature2Title");
+    const feature2Desc = document.getElementById("feature2Desc");
+    const feature3Title = document.getElementById("feature3Title");
+    const feature3Desc = document.getElementById("feature3Desc");
+    const feature4Title = document.getElementById("feature4Title");
+    const feature4Desc = document.getElementById("feature4Desc");
+    const feature5Title = document.getElementById("feature5Title");
+    const feature5Desc = document.getElementById("feature5Desc");
+
+    const appStoreText = document.getElementById("appStoreText");
+    const googlePlayText = document.getElementById("googlePlayText");
     const howTitle = document.getElementById("howTitle");
     const howLead = document.getElementById("howLead");
     const how1Title = document.getElementById("how1Title");
@@ -904,7 +935,20 @@
     const strings = {
       en: {
         langLabel: "EN",
-        hero: "Plan your day with Vibe Day — automatically create your route and discover the best places to visit and the best restaurants, whether you’re a tourist or a local!",
+        hero: "Plan your day in minutes — pick your vibe and time, get a food + discovery route.",
+        appStore: "App Store",
+        googlePlay: "Google Play",
+        featuresTitle: "Features",
+        feature1Title: "Vibe-based routes",
+        feature1Desc: "Pick your mood and time — get a route that fits your day.",
+        feature2Title: "Food + discovery in one plan",
+        feature2Desc: "Great places to eat, plus spots worth exploring — along the way.",
+        feature3Title: "Smart stop ordering",
+        feature3Desc: "Stops are arranged in a smooth flow for your time.",
+        feature4Title: "Follow the route or explore freely",
+        feature4Desc: "Stick to the route — or just browse the best suggestions.",
+        feature5Title: "Save and share plans",
+        feature5Desc: "Keep your favorites and share a ready-to-go route.",
         previewTitle: "App Preview",
         previewHint: "Swipe to explore. Tap any screen to zoom.",
         howTitle: "How it works",
@@ -921,7 +965,20 @@
       },
       tr: {
         langLabel: "TR",
-        hero: "Vibe Day ile gününü planla — rotanı otomatik oluştur, turist ya da yerli olarak en iyi gezilecek yerleri ve en iyi restoranları keşfet!",
+        hero: "Gününü dakikalar içinde planla — vibe’ını ve zamanını seç, yemek + keşif rotanı al.",
+        appStore: "App Store",
+        googlePlay: "Google Play",
+        featuresTitle: "Özellikler",
+        feature1Title: "Vibe’a göre rotalar",
+        feature1Desc: "Ruh halini ve zamanını seç — gününe uyan rotayı al.",
+        feature2Title: "Tek planda yemek + keşif",
+        feature2Desc: "Yol üstünde iyi yemek ve keşfe değer yerler.",
+        feature3Title: "Akıllı durak sıralama",
+        feature3Desc: "Duraklar zamanına göre akıcı bir sıraya dizilir.",
+        feature4Title: "Rotayı takip et veya serbest keşfet",
+        feature4Desc: "İstersen rotayı takip et, istersen sadece önerilere göz at.",
+        feature5Title: "Planı kaydet ve paylaş",
+        feature5Desc: "Favorilerini sakla, hazır rotanı paylaş.",
         previewTitle: "Uygulama Önizlemesi",
         previewHint: "Kaydırarak keşfet. Herhangi bir görsele dokunarak büyüt.",
         howTitle: "Nasıl çalışır",
@@ -938,7 +995,20 @@
       },
       es: {
         langLabel: "ES",
-        hero: "Planifica tu día con Vibe Day: crea tu ruta automáticamente y descubre los mejores lugares y restaurantes, tanto si eres turista como local.",
+        hero: "Planifica tu día en minutos: elige tu vibe y tu tiempo, y obtén una ruta de comida + exploración.",
+        appStore: "App Store",
+        googlePlay: "Google Play",
+        featuresTitle: "Funciones",
+        feature1Title: "Rutas según tu vibe",
+        feature1Desc: "Elige tu estado de ánimo y tu tiempo — obtén una ruta a tu medida.",
+        feature2Title: "Comida + exploración en un solo plan",
+        feature2Desc: "Buenos lugares para comer y sitios para descubrir — en la ruta.",
+        feature3Title: "Orden inteligente de paradas",
+        feature3Desc: "Las paradas se organizan con un flujo cómodo según tu tiempo.",
+        feature4Title: "Sigue la ruta o explora libremente",
+        feature4Desc: "Sigue la ruta — o revisa solo las mejores sugerencias.",
+        feature5Title: "Guarda y comparte planes",
+        feature5Desc: "Guarda tus favoritos y comparte una ruta lista para usar.",
         previewTitle: "Vista previa",
         previewHint: "Desliza para explorar. Toca cualquier pantalla para ampliar.",
         howTitle: "Cómo funciona",
@@ -955,7 +1025,20 @@
       },
       fr: {
         langLabel: "FR",
-        hero: "Planifie ta journée avec Vibe Day : crée automatiquement ton itinéraire et découvre les meilleurs lieux et restaurants, que tu sois touriste ou local.",
+        hero: "Planifie ta journée en quelques minutes : choisis ton vibe et ton temps, et obtiens un itinéraire food + découverte.",
+        appStore: "App Store",
+        googlePlay: "Google Play",
+        featuresTitle: "Fonctionnalités",
+        feature1Title: "Itinéraires selon ton vibe",
+        feature1Desc: "Choisis ton humeur et ton temps — obtiens un itinéraire adapté à ta journée.",
+        feature2Title: "Food + découverte dans un seul plan",
+        feature2Desc: "Bons endroits où manger, plus des lieux à découvrir — sur le chemin.",
+        feature3Title: "Ordre intelligent des étapes",
+        feature3Desc: "Les étapes sont organisées pour un parcours fluide selon ton temps.",
+        feature4Title: "Suis l’itinéraire ou explore librement",
+        feature4Desc: "Suis la route — ou parcours simplement les meilleures suggestions.",
+        feature5Title: "Enregistre et partage",
+        feature5Desc: "Garde tes favoris et partage un itinéraire prêt à partir.",
         previewTitle: "Aperçu",
         previewHint: "Fais défiler. Appuie sur une image pour zoomer.",
         howTitle: "Comment ça marche",
@@ -972,7 +1055,20 @@
       },
       de: {
         langLabel: "DE",
-        hero: "Plane deinen Tag mit Vibe Day – erstelle automatisch deine Route und entdecke die besten Orte und Restaurants, egal ob Tourist oder Einheimischer.",
+        hero: "Plane deinen Tag in Minuten: Wähle Vibe und Zeit – und erhalte eine Food- & Discovery-Route.",
+        appStore: "App Store",
+        googlePlay: "Google Play",
+        featuresTitle: "Funktionen",
+        feature1Title: "Vibe-basierte Routen",
+        feature1Desc: "Wähle Stimmung und Zeit — erhalte eine Route, die zu deinem Tag passt.",
+        feature2Title: "Food + Entdecken in einem Plan",
+        feature2Desc: "Gute Spots zum Essen, plus Orte zum Entdecken — entlang der Route.",
+        feature3Title: "Smarte Reihenfolge der Stops",
+        feature3Desc: "Stops werden passend zu deiner Zeit flüssig angeordnet.",
+        feature4Title: "Route folgen oder frei erkunden",
+        feature4Desc: "Folge der Route — oder sieh dir nur die besten Tipps an.",
+        feature5Title: "Pläne speichern & teilen",
+        feature5Desc: "Favoriten speichern und eine fertige Route teilen.",
         previewTitle: "App-Vorschau",
         previewHint: "Wische zum Entdecken. Tippe zum Vergrößern.",
         howTitle: "So funktioniert’s",
@@ -998,7 +1094,23 @@
       if (previewTitle) previewTitle.textContent = s.previewTitle;
       if (previewHint) previewHint.textContent = s.previewHint;
 
-      if (howTitle) howTitle.textContent = s.howTitle;
+      
+
+      if (featuresTitle) featuresTitle.textContent = s.featuresTitle;
+      if (feature1Title) feature1Title.textContent = s.feature1Title;
+      if (feature1Desc) feature1Desc.textContent = s.feature1Desc;
+      if (feature2Title) feature2Title.textContent = s.feature2Title;
+      if (feature2Desc) feature2Desc.textContent = s.feature2Desc;
+      if (feature3Title) feature3Title.textContent = s.feature3Title;
+      if (feature3Desc) feature3Desc.textContent = s.feature3Desc;
+      if (feature4Title) feature4Title.textContent = s.feature4Title;
+      if (feature4Desc) feature4Desc.textContent = s.feature4Desc;
+      if (feature5Title) feature5Title.textContent = s.feature5Title;
+      if (feature5Desc) feature5Desc.textContent = s.feature5Desc;
+
+      if (appStoreText) appStoreText.textContent = s.appStore;
+      if (googlePlayText) googlePlayText.textContent = s.googlePlay;
+if (howTitle) howTitle.textContent = s.howTitle;
       if (howLead) howLead.innerHTML = s.howLead;
       if (how1Title) how1Title.textContent = s.how1Title;
       if (how1Desc) how1Desc.textContent = s.how1Desc;
@@ -1089,10 +1201,16 @@
     const appStoreBtn = document.getElementById("appStoreBtn");
     const stickyAppStore = document.getElementById("stickyAppStore");
 
+
+    const googlePlayBtn = document.getElementById("googlePlayBtn");
     if (appStoreBtn){
       appStoreBtn.addEventListener("click", () => gaEvent("click_app_store", { source: "hero" }));
     }
-    if (stickyAppStore){
+    
+    if (googlePlayBtn){
+      googlePlayBtn.addEventListener("click", () => gaEvent("click_google_play", { source: "hero" }));
+    }
+if (stickyAppStore){
       stickyAppStore.addEventListener("click", () => gaEvent("click_app_store", { source: "sticky" }));
     }
     if (privacyLink) privacyLink.addEventListener("click", () => gaEvent("click_privacy", {}));
