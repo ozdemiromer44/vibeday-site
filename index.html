@@ -9,8 +9,33 @@
   <title>Vibe Day - Plan Your Day!</title>
 
   <!-- SEO (NO Open Graph) -->
-  <meta name="description" content="Plan your day in minutes — pick your vibe and time, get a food + discovery route." />
+  <meta name="robots" content="index,follow" />
+  <meta name="description" content="Your day in a new city—planned in seconds." />
   <link rel="canonical" href="https://vibeday.site/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Vibe Day" />
+  <meta property="og:url" content="https://vibeday.site/" />
+  <meta property="og:title" content="Vibe Day — Your day in a new city, planned in seconds" />
+  <meta property="og:description" content="Pick your vibe, time, and budget. Get a ready-to-go route—or choose from smart suggestions." />
+  <meta property="og:image" content="https://vibeday.site/app-icon.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Vibe Day — Plan your day in seconds" />
+  <meta name="twitter:description" content="Pick your vibe, time, and budget. Get a ready-to-go route—or choose from smart suggestions." />
+  <meta name="twitter:image" content="https://vibeday.site/app-icon.png" />
+
+  <!-- Performance hints -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+  <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+  <link rel="preload" href="app-icon.png" as="image" fetchpriority="high" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#0f0c29" />
+
 
   <!-- Favicon -->
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
@@ -558,7 +583,175 @@
   margin-bottom: 90px !important;
 }
   
+  
+    /* ===== ACCESSIBILITY / MOTION ===== */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    /* ===== VIDEO FEATURES ===== */
+    .video-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .video-card{
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      overflow: hidden;
+      box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .video-media{
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .feature-video{
+      width: 150px;
+      height: auto;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+      background: rgba(0,0,0,0.15);
+    }
+    .video-copy{ padding: 12px 14px 14px; text-align: left; }
+    .video-card-title{ font-weight: 900; margin: 4px 0 6px; }
+    .video-card-desc{ color: var(--muted2); line-height: 1.5; margin: 0 0 10px; }
+    .video-bullets{
+      margin: 0; padding-left: 18px;
+      color: rgba(255,255,255,0.86);
+      line-height: 1.55;
+      font-size: 0.95rem;
+    }
+    .video-bullets li{ margin: 4px 0; }
+
+    /* ===== FEEDBACK ===== */
+    .feedback-grid{
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 0 0 10px;
+    }
+    .feedback-card{
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      padding: 14px;
+      box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+      text-align: left;
+    }
+    .feedback-quote{ font-weight: 800; margin-bottom: 8px; }
+    .feedback-meta{ color: var(--muted2); font-size: 0.92rem; }
+    .btn.small{ padding: 10px 16px; font-size: 0.95rem; }
+
+    /* ===== FAQ ===== */
+    .faq{
+      margin: 22px auto 8px;
+      max-width: 980px;
+      text-align: left;
+    }
+    .faq-list{ display: grid; gap: 10px; }
+    details.faq-item{
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      backdrop-filter: blur(10px);
+      padding: 0;
+      overflow: hidden;
+      box-shadow: 0 16px 30px rgba(0,0,0,0.18);
+    }
+    details.faq-item summary{
+      cursor: pointer;
+      list-style: none;
+      padding: 14px 14px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      user-select: none;
+    }
+    details.faq-item summary::-webkit-details-marker{ display:none; }
+    .faq-answer{
+      padding: 0 14px 14px;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.6;
+    }
+    .chev{
+      width: 20px; height: 20px; flex: 0 0 auto;
+      opacity: .9;
+      transition: transform .2s ease;
+    }
+    details[open] .chev{ transform: rotate(180deg); }
+
+    /* ===== RTL (Arabic) ===== */
+    .rtl .video-copy,
+    .rtl .how,
+    .rtl .preview-wrap,
+    .rtl .feedback-card,
+    .rtl .faq{ text-align: right; }
+    .rtl .video-bullets{ padding-left: 0; padding-right: 18px; }
+    .rtl .lang-menu{ right: auto; left: 0; }
+    @media (min-width: 900px){
+      .video-grid{ grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px){
+      .video-card{ grid-template-columns: 1fr; }
+      .feature-video{ width: 100%; max-width: 320px; }
+      .video-copy{ text-align: left; }
+      .rtl .video-copy{ text-align: right; }
+    }
+
   </style>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Vibe Day",
+      "url": "https://vibeday.site/",
+      "logo": "https://vibeday.site/app-icon.png",
+      "sameAs": [
+        "https://www.instagram.com/vibedayapp",
+        "https://x.com/vibedayapp",
+        "https://www.tiktok.com/@appvibeday"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "name": "Vibe Day",
+      "url": "https://vibeday.site/"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Vibe Day",
+      "operatingSystem": "iOS",
+      "applicationCategory": "TravelApplication",
+      "url": "https://vibeday.site/",
+      "downloadUrl": "https://apps.apple.com/us/app/vibe-day/id6757344783",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "category": "Free"
+      }
+    }
+  ]
+}
+  </script>
+
 </head>
 
 <body>
@@ -578,17 +771,18 @@
           <div class="lang-item" data-lang="es" role="menuitem">Español</div>
           <div class="lang-item" data-lang="fr" role="menuitem">Français</div>
           <div class="lang-item" data-lang="de" role="menuitem">Deutsch</div>
+        <div class="lang-item" data-lang="ar" role="menuitem">العربية</div>
         </div>
       </div>
     </div>
 
     <!-- HERO -->
-    <img src="app-icon.png" alt="Vibe Day App Icon" class="app-icon" />
+    <img src="app-icon.png" alt="Vibe Day app icon" class="app-icon" width="84" height="84" decoding="async" fetchpriority="high" />
     <h1>Vibe Day</h1>
 
     <p class="hero-text" id="heroText">
       
-      Plan your day in minutes — pick your vibe and time, get a food + discovery route.
+      Your day in a new city—planned in seconds.
     
     </p>
 
@@ -618,7 +812,47 @@
         </svg>
         <span id="googlePlayText">Google Play</span>
       </a>
+    
+    <p class="subnote" id="heroMicro">Free to download • 15 languages • Best for travelers</p>
+
+    <!-- VIDEO FEATURES -->
+    <div class="preview-wrap" id="videoSection">
+      <div class="section-title" id="videoTitle">Live preview</div>
+
+      <div class="video-grid" aria-label="Feature videos">
+        <div class="video-card">
+          <div class="video-media">
+            <video id="videoPlanner" class="feature-video" src="video1.mp4" muted playsinline loop preload="metadata" autoplay aria-label="Planner video preview"></video>
+          </div>
+          <div class="video-copy">
+            <div class="video-card-title" id="video1Title">Planner: pick, save, and go.</div>
+            <div class="video-card-desc" id="video1Desc">Get the best place suggestions, choose what you like, and save your plan.</div>
+            <ul class="video-bullets">
+              <li id="video1B1">Instant suggestions when you're unsure</li>
+              <li id="video1B2">Save places for later</li>
+              <li id="video1B3">Perfect for travel days</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="video-card">
+          <div class="video-media">
+            <video id="videoRoute" class="feature-video" src="video2.mp4" muted playsinline loop preload="metadata" aria-label="Route video preview"></video>
+          </div>
+          <div class="video-copy">
+            <div class="video-card-title" id="video2Title">Route: vibe + budget + time → your best plan.</div>
+            <div class="video-card-desc" id="video2Desc">Create a personalized route for your selected time window—then remove stops you don’t want.</div>
+            <ul class="video-bullets">
+              <li id="video2B1">Detailed map + distance & time</li>
+              <li id="video2B2">Up to 15 stops per route</li>
+              <li id="video2B3">Edit your route anytime</li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
+
+</div>
 
 </div>
 
@@ -704,6 +938,110 @@
         </div>
       </div>
     </div>
+
+  
+    <!-- EARLY ACCESS FEEDBACK -->
+    <div class="how" id="feedbackSection">
+      <div class="section-title" id="feedbackTitle">Early access feedback</div>
+      <div class="how-lead" id="feedbackLead">Feedback is collected from early users. Names are anonymized.</div>
+
+      <div class="feedback-grid" aria-label="Early access feedback cards">
+        <div class="feedback-card">
+          <div class="feedback-quote" id="fb1Quote">Want to be featured here? Send us your quick feedback.</div>
+          <div class="feedback-meta" id="fb1Meta">Early user • Anonymous</div>
+        </div>
+        <div class="feedback-card">
+          <div class="feedback-quote" id="fb2Quote">Tell us which city you used Vibe Day in—and what worked best.</div>
+          <div class="feedback-meta" id="fb2Meta">Early user • Anonymous</div>
+        </div>
+        <div class="feedback-card">
+          <div class="feedback-quote" id="fb3Quote">Short note is enough: “Planner”, “Route”, or “Suggestions”.</div>
+          <div class="feedback-meta" id="fb3Meta">Early user • Anonymous</div>
+        </div>
+      </div>
+
+      <div style="margin: 0 6px 0;">
+        <a class="btn small" href="mailto:vibedayorj@gmail.com?subject=Vibe%20Day%20Feedback" id="feedbackCta" aria-label="Send feedback by email">Send feedback</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq" id="faqSection">
+      <div class="section-title" id="faqTitle">FAQ</div>
+
+      <div class="faq-list" aria-label="Frequently asked questions">
+        <details class="faq-item">
+          <summary><span id="faqQ1">What does Vibe Day do?</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </summary>
+          <div class="faq-answer" id="faqA1">In a new city, Vibe Day creates the best plan for your vibe, time, and budget—either as a ready route or smart suggestions you can pick from.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span id="faqQ2">When is it most useful?</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </summary>
+          <div class="faq-answer" id="faqA2">Especially when you’re traveling as a tourist and don’t know what to do in a new city.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span id="faqQ3">What’s the difference between Planner and Route?</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </summary>
+          <div class="faq-answer" id="faqA3"><strong>Planner</strong> suggests great places—you choose and save. <strong>Route</strong> generates a personalized route based on your time window, vibe, and budget.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span id="faqQ4">How long does it take to create a plan?</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </summary>
+          <div class="faq-answer" id="faqA4">Seconds.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span id="faqQ5">What do I choose to build a route?</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </summary>
+          <div class="faq-answer" id="faqA5">Time window, vibe, who you’re with, budget, transport mode, and optional hashtags.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span id="faqQ6">Can I edit the route?</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </summary>
+          <div class="faq-answer" id="faqA6">Yes. Save your route and remove stops you don’t like.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span id="faqQ7">Are recommendations up to date?</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </summary>
+          <div class="faq-answer" id="faqA7">Yes. We keep recommendations fresh based on real user experiences.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span id="faqQ8">Why do you need my location?</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </summary>
+          <div class="faq-answer" id="faqA8">Location helps us give you accurate, relevant suggestions near you.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span id="faqQ9">Does it work worldwide?</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </summary>
+          <div class="faq-answer" id="faqA9">Yes—Vibe Day is designed to be used in countries and cities worldwide.</div>
+        </details>
+
+        <details class="faq-item">
+          <summary><span id="faqQ10">Is there offline mode?</span>
+            <svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7 10l5 5 5-5z"/></svg>
+          </summary>
+          <div class="faq-answer" id="faqA10">Not yet—Vibe Day requires an internet connection.</div>
+        </details>
+      </div>
+    </div>
+
 
   </div><!-- /.container -->
 
@@ -893,6 +1231,7 @@
       startX = null; startY = null;
     }, { passive: true });
 
+    
     /* =============================
        LANGUAGE SYSTEM
     ============================== */
@@ -901,9 +1240,10 @@
     const langLabel = document.getElementById("langLabel");
 
     const heroText = document.getElementById("heroText");
+    const heroMicro = document.getElementById("heroMicro");
+
     const previewTitle = document.getElementById("previewTitle");
     const previewHint = document.getElementById("previewHint");
-
 
     const featuresTitle = document.getElementById("featuresTitle");
     const feature1Title = document.getElementById("feature1Title");
@@ -916,6 +1256,51 @@
     const feature4Desc = document.getElementById("feature4Desc");
     const feature5Title = document.getElementById("feature5Title");
     const feature5Desc = document.getElementById("feature5Desc");
+
+    const videoTitle = document.getElementById("videoTitle");
+    const video1Title = document.getElementById("video1Title");
+    const video1Desc = document.getElementById("video1Desc");
+    const video1B1 = document.getElementById("video1B1");
+    const video1B2 = document.getElementById("video1B2");
+    const video1B3 = document.getElementById("video1B3");
+
+    const video2Title = document.getElementById("video2Title");
+    const video2Desc = document.getElementById("video2Desc");
+    const video2B1 = document.getElementById("video2B1");
+    const video2B2 = document.getElementById("video2B2");
+    const video2B3 = document.getElementById("video2B3");
+
+    const feedbackTitle = document.getElementById("feedbackTitle");
+    const feedbackLead = document.getElementById("feedbackLead");
+    const feedbackCta = document.getElementById("feedbackCta");
+    const fb1Quote = document.getElementById("fb1Quote");
+    const fb1Meta = document.getElementById("fb1Meta");
+    const fb2Quote = document.getElementById("fb2Quote");
+    const fb2Meta = document.getElementById("fb2Meta");
+    const fb3Quote = document.getElementById("fb3Quote");
+    const fb3Meta = document.getElementById("fb3Meta");
+
+    const faqTitle = document.getElementById("faqTitle");
+    const faqQ1 = document.getElementById("faqQ1");
+    const faqA1 = document.getElementById("faqA1");
+    const faqQ2 = document.getElementById("faqQ2");
+    const faqA2 = document.getElementById("faqA2");
+    const faqQ3 = document.getElementById("faqQ3");
+    const faqA3 = document.getElementById("faqA3");
+    const faqQ4 = document.getElementById("faqQ4");
+    const faqA4 = document.getElementById("faqA4");
+    const faqQ5 = document.getElementById("faqQ5");
+    const faqA5 = document.getElementById("faqA5");
+    const faqQ6 = document.getElementById("faqQ6");
+    const faqA6 = document.getElementById("faqA6");
+    const faqQ7 = document.getElementById("faqQ7");
+    const faqA7 = document.getElementById("faqA7");
+    const faqQ8 = document.getElementById("faqQ8");
+    const faqA8 = document.getElementById("faqA8");
+    const faqQ9 = document.getElementById("faqQ9");
+    const faqA9 = document.getElementById("faqA9");
+    const faqQ10 = document.getElementById("faqQ10");
+    const faqA10 = document.getElementById("faqA10");
 
     const appStoreText = document.getElementById("appStoreText");
     const googlePlayText = document.getElementById("googlePlayText");
@@ -932,12 +1317,28 @@
     const contactLink = document.getElementById("contactLink");
     const stickyText = document.getElementById("stickyText");
 
+    const metaDescEl = document.querySelector('meta[name="description"]');
+
     const strings = {
       en: {
         langLabel: "EN",
-        hero: "Plan your day in minutes — pick your vibe and time, get a food + discovery route.",
+        docTitle: "Vibe Day — Plan your day in seconds",
+        metaDesc: "Pick your vibe, time, and budget. Get a ready-to-go route—or choose from smart suggestions.",
+        hero: "Your day in a new city—planned in seconds.",
+        heroMicro: "Free to download • 15 languages • Best for travelers",
         appStore: "App Store",
         googlePlay: "Google Play",
+        videoTitle: "Live preview",
+        video1Title: "Planner: pick, save, and go.",
+        video1Desc: "Get the best place suggestions, choose what you like, and save your plan.",
+        video1B1: "Instant suggestions when you're unsure",
+        video1B2: "Save places for later",
+        video1B3: "Perfect for travel days",
+        video2Title: "Route: vibe + budget + time → your best plan.",
+        video2Desc: "Create a personalized route for your selected time window—then remove stops you don’t want.",
+        video2B1: "Detailed map + distance & time",
+        video2B2: "Up to 15 stops per route",
+        video2B3: "Edit your route anytime",
         featuresTitle: "Features",
         feature1Title: "Vibe-based routes",
         feature1Desc: "Pick your mood and time — get a route that fits your day.",
@@ -957,17 +1358,61 @@
         how1Desc: "Pick your current location or your next destination.",
         how2Title: "Set your vibe",
         how2Desc: "Tell us your mood and time — we’ll tailor the plan.",
-        how3Title: "Get your route",
+        how3Title: "Get your plan",
         how3Desc: "Follow the route or just explore the best suggestions.",
+        feedbackTitle: "Early access feedback",
+        feedbackLead: "Feedback is collected from early users. Names are anonymized.",
+        feedbackCta: "Send feedback",
+        fb1Quote: "Want to be featured here? Send us your quick feedback.",
+        fb1Meta: "Early user • Anonymous",
+        fb2Quote: "Tell us which city you used Vibe Day in—and what worked best.",
+        fb2Meta: "Early user • Anonymous",
+        fb3Quote: "Short note is enough: “Planner”, “Route”, or “Suggestions”.",
+        fb3Meta: "Early user • Anonymous",
+        faqTitle: "FAQ",
+        faqQ1: "What does Vibe Day do?",
+        faqA1: "In a new city, Vibe Day creates the best plan for your vibe, time, and budget—either as a ready route or smart suggestions you can pick from.",
+        faqQ2: "When is it most useful?",
+        faqA2: "Especially when you’re traveling as a tourist and don’t know what to do in a new city.",
+        faqQ3: "What’s the difference between Planner and Route?",
+        faqA3: "<strong>Planner</strong> suggests great places—you choose and save. <strong>Route</strong> generates a personalized route based on your time window, vibe, and budget.",
+        faqQ4: "How long does it take to create a plan?",
+        faqA4: "Seconds.",
+        faqQ5: "What do I choose to build a route?",
+        faqA5: "Time window, vibe, who you’re with, budget, transport mode, and optional hashtags.",
+        faqQ6: "Can I edit the route?",
+        faqA6: "Yes. Save your route and remove stops you don’t like.",
+        faqQ7: "Are recommendations up to date?",
+        faqA7: "Yes. We keep recommendations fresh based on real user experiences.",
+        faqQ8: "Why do you need my location?",
+        faqA8: "Location helps us give you accurate, relevant suggestions near you.",
+        faqQ9: "Does it work worldwide?",
+        faqA9: "Yes—Vibe Day is designed to be used in countries and cities worldwide.",
+        faqQ10: "Is there offline mode?",
+        faqA10: "Not yet—Vibe Day requires an internet connection.",
         privacy: "Privacy Policy",
         contact: "Contact",
         sticky: "Get it on App Store"
       },
       tr: {
         langLabel: "TR",
-        hero: "Gününü dakikalar içinde planla — vibe’ını ve zamanını seç, yemek + keşif rotanı al.",
+        docTitle: "Vibe Day — Gününü saniyeler içinde planla",
+        metaDesc: "Vibe’ını, zamanını ve bütçeni seç. Hazır rotanı oluştur—ya da akıllı önerilerden seç.",
+        hero: "Yeni bir şehirde günün—saniyeler içinde planlı.",
+        heroMicro: "Ücretsiz indir • 15 dil • Seyahat için ideal",
         appStore: "App Store",
         googlePlay: "Google Play",
+        videoTitle: "Canlı önizleme",
+        video1Title: "Planner: seç, kaydet, çık.",
+        video1Desc: "En iyi yer önerilerini gör, istediğini seç ve planını kaydet.",
+        video1B1: "Kararsız kaldığında anında öneri",
+        video1B2: "Yerleri kaydet, sonra dön",
+        video1B3: "Seyahat günleri için ideal",
+        video2Title: "Rota: vibe + bütçe + zaman → en iyi plan.",
+        video2Desc: "Seçtiğin saat aralığına göre kişisel rotanı oluştur—istemediğin durakları çıkar.",
+        video2B1: "Harita + mesafe & süre",
+        video2B2: "15 durağa kadar rota",
+        video2B3: "Rotanı dilediğin gibi düzenle",
         featuresTitle: "Özellikler",
         feature1Title: "Vibe’a göre rotalar",
         feature1Desc: "Ruh halini ve zamanını seç — gününe uyan rotayı al.",
@@ -987,28 +1432,72 @@
         how1Desc: "Bulunduğun yeri ya da gideceğin destinasyonu seç.",
         how2Title: "Vibe'ını ayarla",
         how2Desc: "Ruh halini ve zamanını söyle — planı sana göre hazırlayalım.",
-        how3Title: "Rotanı al",
+        how3Title: "Planını al",
         how3Desc: "Rotayı takip et ya da sadece önerileri keşfet.",
+        feedbackTitle: "Erken erişim notları",
+        feedbackLead: "Geri bildirimler erken kullanıcılardan toplanır. İsimler anonimdir.",
+        feedbackCta: "Geri bildirim gönder",
+        fb1Quote: "Burada yer almak ister misin? Kısa geri bildirimin yeterli.",
+        fb1Meta: "Erken kullanıcı • Anonim",
+        fb2Quote: "Hangi şehirde kullandın ve en çok ne işine yaradı?",
+        fb2Meta: "Erken kullanıcı • Anonim",
+        fb3Quote: "Kısacık yazman yeter: “Planner”, “Rota” veya “Öneriler”.",
+        fb3Meta: "Erken kullanıcı • Anonim",
+        faqTitle: "Sık sorulanlar",
+        faqQ1: "Vibe Day ne yapar?",
+        faqA1: "Yeni bir şehirde vibe, zaman ve bütçene göre en iyi planı çıkarır—hazır rota olarak ya da seçebileceğin akıllı önerilerle.",
+        faqQ2: "Ne zaman en faydalı?",
+        faqA2: "Özellikle turist olarak yeni bir şehre gittiğinde ve ne yapacağını bilmediğinde.",
+        faqQ3: "Planner ve Rota farkı ne?",
+        faqA3: "<strong>Planner</strong> en iyi yerleri önerir—sen seçer ve kaydedersin. <strong>Rota</strong> ise zaman aralığına, vibe’ına ve bütçene göre rota oluşturur.",
+        faqQ4: "Plan oluşturmak ne kadar sürer?",
+        faqA4: "Saniyeler.",
+        faqQ5: "Rota oluştururken neleri seçiyorum?",
+        faqA5: "Saat aralığı, vibe, kiminle olduğun, bütçe, ulaşım modu ve isteğe bağlı hashtag’ler.",
+        faqQ6: "Rotayı düzenleyebilir miyim?",
+        faqA6: "Evet. Rotanı kaydedip istemediğin durakları çıkarabilirsin.",
+        faqQ7: "Öneriler güncel mi?",
+        faqA7: "Evet. Önerileri kullanıcı deneyimlerine göre güncel tutuyoruz.",
+        faqQ8: "Konum neden gerekli?",
+        faqA8: "Sana gerçek ve doğru önerilerde bulunabilmemiz için konum gerekli.",
+        faqQ9: "Her yerde çalışır mı?",
+        faqA9: "Evet—Vibe Day dünya genelinde şehirlerde kullanılacak şekilde tasarlandı.",
+        faqQ10: "Offline çalışır mı?",
+        faqA10: "Henüz hayır—Vibe Day internet bağlantısı gerektirir.",
         privacy: "Gizlilik",
         contact: "İletişim",
         sticky: "App Store'dan indir"
       },
       es: {
         langLabel: "ES",
-        hero: "Planifica tu día en minutos: elige tu vibe y tu tiempo, y obtén una ruta de comida + exploración.",
+        docTitle: "Vibe Day — Planifica tu día en segundos",
+        metaDesc: "Elige tu vibra, tiempo y presupuesto. Obtén una ruta lista o selecciona recomendaciones inteligentes.",
+        hero: "Tu día en una nueva ciudad, planificado en segundos.",
+        heroMicro: "Gratis para descargar • 15 idiomas • Ideal para viajeros",
         appStore: "App Store",
         googlePlay: "Google Play",
+        videoTitle: "Vista en vivo",
+        video1Title: "Planner: elige, guarda y sal.",
+        video1Desc: "Recibe sugerencias, elige lo que te gusta y guarda tu plan.",
+        video1B1: "Sugerencias al instante",
+        video1B2: "Guarda lugares para después",
+        video1B3: "Perfecto para viajes",
+        video2Title: "Ruta: vibra + presupuesto + tiempo → tu mejor plan.",
+        video2Desc: "Crea una ruta personalizada para tu franja horaria y elimina paradas que no quieras.",
+        video2B1: "Mapa + distancia y tiempo",
+        video2B2: "Hasta 15 paradas por ruta",
+        video2B3: "Edita tu ruta cuando quieras",
         featuresTitle: "Funciones",
         feature1Title: "Rutas según tu vibe",
         feature1Desc: "Elige tu estado de ánimo y tu tiempo — obtén una ruta a tu medida.",
         feature2Title: "Comida + exploración en un solo plan",
         feature2Desc: "Buenos lugares para comer y sitios para descubrir — en la ruta.",
         feature3Title: "Orden inteligente de paradas",
-        feature3Desc: "Las paradas se organizan con un flujo cómodo según tu tiempo.",
+        feature3Desc: "Las paradas se organizan según tu tiempo para un flujo cómodo.",
         feature4Title: "Sigue la ruta o explora libremente",
-        feature4Desc: "Sigue la ruta — o revisa solo las mejores sugerencias.",
+        feature4Desc: "Sigue la ruta — o mira solo las mejores sugerencias.",
         feature5Title: "Guarda y comparte planes",
-        feature5Desc: "Guarda tus favoritos y comparte una ruta lista para usar.",
+        feature5Desc: "Guarda favoritos y comparte una ruta lista para usar.",
         previewTitle: "Vista previa",
         previewHint: "Desliza para explorar. Toca cualquier pantalla para ampliar.",
         howTitle: "Cómo funciona",
@@ -1017,26 +1506,70 @@
         how1Desc: "Selecciona tu ubicación actual o tu próximo destino.",
         how2Title: "Define tu vibe",
         how2Desc: "Dinos tu estado de ánimo y tiempo — ajustamos el plan.",
-        how3Title: "Obtén tu ruta",
+        how3Title: "Obtén tu plan",
         how3Desc: "Sigue la ruta o explora solo las mejores sugerencias.",
+        feedbackTitle: "Comentarios de acceso anticipado",
+        feedbackLead: "Los comentarios provienen de usuarios tempranos. Los nombres se anonimizan.",
+        feedbackCta: "Enviar comentario",
+        fb1Quote: "¿Quieres aparecer aquí? Envíanos un comentario rápido.",
+        fb1Meta: "Usuario temprano • Anónimo",
+        fb2Quote: "Cuéntanos en qué ciudad la usaste y qué te ayudó más.",
+        fb2Meta: "Usuario temprano • Anónimo",
+        fb3Quote: "Basta una nota corta: “Planner”, “Ruta” o “Sugerencias”.",
+        fb3Meta: "Usuario temprano • Anónimo",
+        faqTitle: "Preguntas frecuentes",
+        faqQ1: "¿Qué hace Vibe Day?",
+        faqA1: "En una ciudad nueva, crea el mejor plan según tu vibra, tiempo y presupuesto—como ruta lista o sugerencias inteligentes.",
+        faqQ2: "¿Cuándo es más útil?",
+        faqA2: "Especialmente cuando viajas como turista y no sabes qué hacer.",
+        faqQ3: "¿Cuál es la diferencia entre Planner y Ruta?",
+        faqA3: "<strong>Planner</strong> sugiere lugares: tú eliges y guardas. <strong>Ruta</strong> genera una ruta según tu tiempo, vibra y presupuesto.",
+        faqQ4: "¿Cuánto tarda en crear un plan?",
+        faqA4: "Segundos.",
+        faqQ5: "¿Qué elijo para crear una ruta?",
+        faqA5: "Franja horaria, vibra, con quién vas, presupuesto, transporte y hashtags opcionales.",
+        faqQ6: "¿Puedo editar la ruta?",
+        faqA6: "Sí. Guarda tu ruta y elimina paradas que no te gusten.",
+        faqQ7: "¿Las recomendaciones están actualizadas?",
+        faqA7: "Sí. Las mantenemos al día según experiencias reales de usuarios.",
+        faqQ8: "¿Por qué necesitan mi ubicación?",
+        faqA8: "La ubicación nos ayuda a darte sugerencias relevantes y precisas cerca de ti.",
+        faqQ9: "¿Funciona en todo el mundo?",
+        faqA9: "Sí—está diseñada para usarse en ciudades de todo el mundo.",
+        faqQ10: "¿Hay modo sin conexión?",
+        faqA10: "Aún no—Vibe Day requiere conexión a internet.",
         privacy: "Privacidad",
         contact: "Contacto",
         sticky: "Descargar en App Store"
       },
       fr: {
         langLabel: "FR",
-        hero: "Planifie ta journée en quelques minutes : choisis ton vibe et ton temps, et obtiens un itinéraire food + découverte.",
+        docTitle: "Vibe Day — Planifie ta journée en quelques secondes",
+        metaDesc: "Choisis ton vibe, ton temps et ton budget. Obtiens un itinéraire prêt à partir ou des suggestions intelligentes.",
+        hero: "Votre journée dans une nouvelle ville, planifiée en quelques secondes.",
+        heroMicro: "Gratuit à télécharger • 15 langues • Idéal pour voyager",
         appStore: "App Store",
         googlePlay: "Google Play",
+        videoTitle: "Aperçu en direct",
+        video1Title: "Planner : choisis, enregistre, pars.",
+        video1Desc: "Reçois des suggestions, choisis ce que tu aimes et enregistre ton plan.",
+        video1B1: "Suggestions instantanées",
+        video1B2: "Enregistre des lieux",
+        video1B3: "Parfait en voyage",
+        video2Title: "Itinéraire : vibe + budget + temps → ton meilleur plan.",
+        video2Desc: "Crée un itinéraire personnalisé pour ton créneau horaire et supprime les étapes qui ne te conviennent pas.",
+        video2B1: "Carte + distance & temps",
+        video2B2: "Jusqu’à 15 étapes",
+        video2B3: "Modifie quand tu veux",
         featuresTitle: "Fonctionnalités",
         feature1Title: "Itinéraires selon ton vibe",
-        feature1Desc: "Choisis ton humeur et ton temps — obtiens un itinéraire adapté à ta journée.",
-        feature2Title: "Food + découverte dans un seul plan",
-        feature2Desc: "Bons endroits où manger, plus des lieux à découvrir — sur le chemin.",
+        feature1Desc: "Choisis ton humeur et ton temps — obtiens un itinéraire adapté.",
+        feature2Title: "Food + découverte en un plan",
+        feature2Desc: "Bons endroits où manger et lieux à découvrir — sur le chemin.",
         feature3Title: "Ordre intelligent des étapes",
         feature3Desc: "Les étapes sont organisées pour un parcours fluide selon ton temps.",
-        feature4Title: "Suis l’itinéraire ou explore librement",
-        feature4Desc: "Suis la route — ou parcours simplement les meilleures suggestions.",
+        feature4Title: "Suis l’itinéraire ou explore",
+        feature4Desc: "Suis la route — ou consulte seulement les meilleures suggestions.",
         feature5Title: "Enregistre et partage",
         feature5Desc: "Garde tes favoris et partage un itinéraire prêt à partir.",
         previewTitle: "Aperçu",
@@ -1047,17 +1580,61 @@
         how1Desc: "Ta position actuelle ou ta prochaine destination.",
         how2Title: "Choisis ton vibe",
         how2Desc: "Ton humeur et ton temps — on adapte le plan.",
-        how3Title: "Récupère ton itinéraire",
-        how3Desc: "Suis l’itinéraire ou explore seulement les suggestions.",
+        how3Title: "Obtiens ton plan",
+        how3Desc: "Suis l’itinéraire ou explore les suggestions.",
+        feedbackTitle: "Avis des premiers utilisateurs",
+        feedbackLead: "Les retours viennent d’utilisateurs en accès anticipé. Noms anonymisés.",
+        feedbackCta: "Envoyer un avis",
+        fb1Quote: "Envie d’apparaître ici ? Envoie-nous un retour rapide.",
+        fb1Meta: "Utilisateur précoce • Anonyme",
+        fb2Quote: "Dis-nous dans quelle ville tu l’as utilisée et ce qui t’a le plus aidé.",
+        fb2Meta: "Utilisateur précoce • Anonyme",
+        fb3Quote: "Une courte note suffit : « Planner », « Itinéraire » ou « Suggestions ».",
+        fb3Meta: "Utilisateur précoce • Anonyme",
+        faqTitle: "FAQ",
+        faqQ1: "Que fait Vibe Day ?",
+        faqA1: "Dans une nouvelle ville, il crée le meilleur plan selon ton vibe, ton temps et ton budget—itinéraire prêt ou suggestions intelligentes.",
+        faqQ2: "Quand est-ce le plus utile ?",
+        faqA2: "Surtout quand tu voyages en touriste et que tu ne sais pas quoi faire.",
+        faqQ3: "Différence entre Planner et Itinéraire ?",
+        faqA3: "<strong>Planner</strong> suggère des lieux : tu choisis et enregistres. <strong>Itinéraire</strong> génère une route selon ton temps, vibe et budget.",
+        faqQ4: "Combien de temps pour créer un plan ?",
+        faqA4: "Quelques secondes.",
+        faqQ5: "Que dois-je choisir pour créer une route ?",
+        faqA5: "Créneau horaire, vibe, avec qui tu es, budget, transport et hashtags optionnels.",
+        faqQ6: "Puis-je modifier l’itinéraire ?",
+        faqA6: "Oui. Enregistre et supprime les étapes qui ne te plaisent pas.",
+        faqQ7: "Les recommandations sont-elles à jour ?",
+        faqA7: "Oui. Nous les mettons à jour selon de vraies expériences utilisateurs.",
+        faqQ8: "Pourquoi la localisation est nécessaire ?",
+        faqA8: "La localisation permet des suggestions pertinentes et précises près de toi.",
+        faqQ9: "Est-ce que ça marche partout ?",
+        faqA9: "Oui—conçu pour être utilisé dans des villes du monde entier.",
+        faqQ10: "Mode hors ligne ?",
+        faqA10: "Pas encore—Vibe Day nécessite une connexion internet.",
         privacy: "Confidentialité",
         contact: "Contact",
         sticky: "Télécharger sur App Store"
       },
       de: {
         langLabel: "DE",
-        hero: "Plane deinen Tag in Minuten: Wähle Vibe und Zeit – und erhalte eine Food- & Discovery-Route.",
+        docTitle: "Vibe Day — Plane deinen Tag in Sekunden",
+        metaDesc: "Wähle Vibe, Zeit und Budget. Erhalte eine fertige Route oder smarte Empfehlungen.",
+        hero: "Dein Tag in einer neuen Stadt – in Sekunden geplant.",
+        heroMicro: "Kostenlos herunterladen • 15 Sprachen • Perfekt fürs Reisen",
         appStore: "App Store",
         googlePlay: "Google Play",
+        videoTitle: "Live-Vorschau",
+        video1Title: "Planner: auswählen, speichern, los.",
+        video1Desc: "Erhalte Empfehlungen, wähle deine Favoriten und speichere deinen Plan.",
+        video1B1: "Sofortige Vorschläge",
+        video1B2: "Orte für später speichern",
+        video1B3: "Ideal für Reisetage",
+        video2Title: "Route: Vibe + Budget + Zeit → dein bester Plan.",
+        video2Desc: "Erstelle eine personalisierte Route für dein Zeitfenster und entferne Stops, die du nicht willst.",
+        video2B1: "Karte + Distanz & Zeit",
+        video2B2: "Bis zu 15 Stops pro Route",
+        video2B3: "Route jederzeit bearbeiten",
         featuresTitle: "Funktionen",
         feature1Title: "Vibe-basierte Routen",
         feature1Desc: "Wähle Stimmung und Zeit — erhalte eine Route, die zu deinem Tag passt.",
@@ -1077,11 +1654,115 @@
         how1Desc: "Aktuellen Standort oder nächstes Ziel auswählen.",
         how2Title: "Vibe festlegen",
         how2Desc: "Stimmung & Zeit angeben — wir passen alles an.",
-        how3Title: "Route bekommen",
-        how3Desc: "Route folgen oder nur Empfehlungen entdecken.",
+        how3Title: "Plan erhalten",
+        how3Desc: "Route folgen oder Empfehlungen entdecken.",
+        feedbackTitle: "Feedback aus der Early-Access-Phase",
+        feedbackLead: "Feedback stammt von frühen Nutzern. Namen werden anonymisiert.",
+        feedbackCta: "Feedback senden",
+        fb1Quote: "Möchtest du hier erscheinen? Schick uns kurzes Feedback.",
+        fb1Meta: "Früher Nutzer • Anonym",
+        fb2Quote: "In welcher Stadt hast du es genutzt – und was hat am meisten geholfen?",
+        fb2Meta: "Früher Nutzer • Anonym",
+        fb3Quote: "Kurze Notiz reicht: „Planner“, „Route“ oder „Empfehlungen“.",
+        fb3Meta: "Früher Nutzer • Anonym",
+        faqTitle: "FAQ",
+        faqQ1: "Was macht Vibe Day?",
+        faqA1: "In einer neuen Stadt erstellt es den besten Plan für Vibe, Zeit und Budget—als fertige Route oder smarte Empfehlungen.",
+        faqQ2: "Wann ist es am hilfreichsten?",
+        faqA2: "Besonders auf Reisen als Tourist, wenn du nicht weißt, was du machen sollst.",
+        faqQ3: "Unterschied zwischen Planner und Route?",
+        faqA3: "<strong>Planner</strong> schlägt Orte vor: du wählst und speicherst. <strong>Route</strong> generiert eine Route nach Zeitfenster, Vibe und Budget.",
+        faqQ4: "Wie lange dauert es, einen Plan zu erstellen?",
+        faqA4: "Sekunden.",
+        faqQ5: "Was wähle ich für eine Route?",
+        faqA5: "Zeitfenster, Vibe, Begleitung, Budget, Transport und optionale Hashtags.",
+        faqQ6: "Kann ich die Route bearbeiten?",
+        faqA6: "Ja. Speichere die Route und entferne Stops, die du nicht magst.",
+        faqQ7: "Sind Empfehlungen aktuell?",
+        faqA7: "Ja. Wir halten sie anhand echter Nutzererfahrungen aktuell.",
+        faqQ8: "Warum braucht ihr meinen Standort?",
+        faqA8: "Der Standort hilft, dir genaue und relevante Vorschläge in deiner Nähe zu geben.",
+        faqQ9: "Funktioniert es weltweit?",
+        faqA9: "Ja—für Städte weltweit gedacht.",
+        faqQ10: "Offline-Modus?",
+        faqA10: "Noch nicht—Vibe Day benötigt eine Internetverbindung.",
         privacy: "Datenschutz",
         contact: "Kontakt",
         sticky: "Im App Store holen"
+      },
+      ar: {
+        langLabel: "AR",
+        docTitle: "Vibe Day — خطّط يومك خلال ثوانٍ",
+        metaDesc: "اختر الأجواء والوقت والميزانية. احصل على مسار جاهز أو اقتراحات ذكية تختار منها.",
+        hero: "يومك في مدينة جديدة — مُخطّط خلال ثوانٍ.",
+        heroMicro: "تحميل مجاني • 15 لغة • مثالي للمسافرين",
+        appStore: "App Store",
+        googlePlay: "Google Play",
+        videoTitle: "معاينة مباشرة",
+        video1Title: "المخطّط: اختر، احفظ، وانطلق.",
+        video1Desc: "احصل على أفضل الاقتراحات، اختر ما يعجبك، واحفظ خطتك.",
+        video1B1: "اقتراحات فورية عند التردد",
+        video1B2: "احفظ الأماكن لوقت لاحق",
+        video1B3: "مناسب لأيام السفر",
+        video2Title: "المسار: أجواء + ميزانية + وقت → أفضل خطة.",
+        video2Desc: "أنشئ مسارًا مخصصًا ضمن نافذة الوقت—واحذف المحطات التي لا تريدها.",
+        video2B1: "خريطة + المسافة والوقت",
+        video2B2: "حتى 15 محطة لكل مسار",
+        video2B3: "عدّل مسارك في أي وقت",
+        featuresTitle: "الميزات",
+        feature1Title: "مسارات حسب الأجواء",
+        feature1Desc: "اختر مزاجك ووقتك — واحصل على مسار يناسب يومك.",
+        feature2Title: "طعام + اكتشاف في خطة واحدة",
+        feature2Desc: "أماكن رائعة للأكل وأماكن تستحق الاستكشاف — على الطريق.",
+        feature3Title: "ترتيب ذكي للمحطات",
+        feature3Desc: "يتم ترتيب المحطات بسلاسة وفقًا لوقتك.",
+        feature4Title: "اتبع المسار أو استكشف بحرية",
+        feature4Desc: "اتبع المسار — أو تصفح أفضل الاقتراحات فقط.",
+        feature5Title: "احفظ وشارك الخطط",
+        feature5Desc: "احفظ المفضلة وشارك مسارًا جاهزًا.",
+        previewTitle: "معاينة التطبيق",
+        previewHint: "اسحب للاستكشاف. اضغط للتكبير.",
+        howTitle: "كيف يعمل",
+        howLead: "<strong>لا تعرف ماذا تفعل؟</strong> سواء كنت في موقعك الحالي أو تخطط لرحلة، ينشئ Vibe Day مسارًا مخصصًا لك — أو يقترح أفضل الأماكن فقط.",
+        how1Title: "اختر المكان",
+        how1Desc: "اختر موقعك الحالي أو وجهتك القادمة.",
+        how2Title: "حدد الأجواء",
+        how2Desc: "أخبرنا بمزاجك ووقتك — وسنضبط الخطة.",
+        how3Title: "احصل على خطتك",
+        how3Desc: "اتبع المسار أو استكشف الاقتراحات.",
+        feedbackTitle: "آراء الوصول المبكر",
+        feedbackLead: "يتم جمع الآراء من المستخدمين الأوائل. الأسماء مجهولة.",
+        feedbackCta: "إرسال ملاحظة",
+        fb1Quote: "هل تريد الظهور هنا؟ أرسل لنا ملاحظتك السريعة.",
+        fb1Meta: "مستخدم مبكر • مجهول",
+        fb2Quote: "أخبرنا في أي مدينة استخدمت التطبيق وما الذي ساعدك أكثر.",
+        fb2Meta: "مستخدم مبكر • مجهول",
+        fb3Quote: "تكفي ملاحظة قصيرة: «المخطّط»، «المسار»، أو «الاقتراحات».",
+        fb3Meta: "مستخدم مبكر • مجهول",
+        faqTitle: "الأسئلة الشائعة",
+        faqQ1: "ماذا يفعل Vibe Day؟",
+        faqA1: "في مدينة جديدة، ينشئ أفضل خطة حسب الأجواء والوقت والميزانية—كمسار جاهز أو اقتراحات ذكية تختار منها.",
+        faqQ2: "متى يكون الأكثر فائدة؟",
+        faqA2: "خصوصًا عند السفر كسائح عندما لا تعرف ماذا تفعل في مدينة جديدة.",
+        faqQ3: "ما الفرق بين المخطّط والمسار؟",
+        faqA3: "<strong>المخطّط</strong> يقترح أماكن—أنت تختار وتحفظ. <strong>المسار</strong> ينشئ مسارًا مخصصًا حسب نافذة الوقت والأجواء والميزانية.",
+        faqQ4: "كم يستغرق إنشاء خطة؟",
+        faqA4: "ثوانٍ.",
+        faqQ5: "ماذا أختار لبناء مسار؟",
+        faqA5: "نافذة الوقت، الأجواء، مع من ستكون، الميزانية، وسيلة التنقل، ووسوم اختيارية.",
+        faqQ6: "هل يمكنني تعديل المسار؟",
+        faqA6: "نعم. احفظ المسار واحذف المحطات التي لا تريدها.",
+        faqQ7: "هل الاقتراحات محدثة؟",
+        faqA7: "نعم. نحافظ عليها محدثة بناءً على تجارب المستخدمين الحقيقية.",
+        faqQ8: "لماذا تحتاجون موقعي؟",
+        faqA8: "يساعدنا الموقع على تقديم اقتراحات دقيقة وملائمة بالقرب منك.",
+        faqQ9: "هل يعمل في كل مكان؟",
+        faqA9: "نعم—مصمم للاستخدام في مدن حول العالم.",
+        faqQ10: "هل يوجد وضع دون اتصال؟",
+        faqA10: "ليس بعد—يحتاج Vibe Day إلى اتصال بالإنترنت.",
+        privacy: "الخصوصية",
+        contact: "تواصل",
+        sticky: "حمّله من App Store"
       }
     };
 
@@ -1089,12 +1770,23 @@
       const s = strings[code] || strings.en;
       localStorage.setItem("vibe_lang", code);
 
+      // html lang + dir
+      try{
+        document.documentElement.lang = (code === "ar") ? "ar" : code;
+        document.documentElement.dir = (code === "ar") ? "rtl" : "ltr";
+        document.body.classList.toggle("rtl", code === "ar");
+      } catch(_){}
+
       if (langLabel) langLabel.textContent = s.langLabel;
+
+      if (document && s.docTitle) document.title = s.docTitle;
+      if (metaDescEl && s.metaDesc) metaDescEl.setAttribute("content", s.metaDesc);
+
       if (heroText) heroText.textContent = s.hero;
+      if (heroMicro) heroMicro.textContent = s.heroMicro;
+
       if (previewTitle) previewTitle.textContent = s.previewTitle;
       if (previewHint) previewHint.textContent = s.previewHint;
-
-      
 
       if (featuresTitle) featuresTitle.textContent = s.featuresTitle;
       if (feature1Title) feature1Title.textContent = s.feature1Title;
@@ -1108,9 +1800,20 @@
       if (feature5Title) feature5Title.textContent = s.feature5Title;
       if (feature5Desc) feature5Desc.textContent = s.feature5Desc;
 
-      if (appStoreText) appStoreText.textContent = s.appStore;
-      if (googlePlayText) googlePlayText.textContent = s.googlePlay;
-if (howTitle) howTitle.textContent = s.howTitle;
+      if (videoTitle) videoTitle.textContent = s.videoTitle;
+      if (video1Title) video1Title.textContent = s.video1Title;
+      if (video1Desc) video1Desc.textContent = s.video1Desc;
+      if (video1B1) video1B1.textContent = s.video1B1;
+      if (video1B2) video1B2.textContent = s.video1B2;
+      if (video1B3) video1B3.textContent = s.video1B3;
+
+      if (video2Title) video2Title.textContent = s.video2Title;
+      if (video2Desc) video2Desc.textContent = s.video2Desc;
+      if (video2B1) video2B1.textContent = s.video2B1;
+      if (video2B2) video2B2.textContent = s.video2B2;
+      if (video2B3) video2B3.textContent = s.video2B3;
+
+      if (howTitle) howTitle.textContent = s.howTitle;
       if (howLead) howLead.innerHTML = s.howLead;
       if (how1Title) how1Title.textContent = s.how1Title;
       if (how1Desc) how1Desc.textContent = s.how1Desc;
@@ -1118,6 +1821,41 @@ if (howTitle) howTitle.textContent = s.howTitle;
       if (how2Desc) how2Desc.textContent = s.how2Desc;
       if (how3Title) how3Title.textContent = s.how3Title;
       if (how3Desc) how3Desc.textContent = s.how3Desc;
+
+      if (feedbackTitle) feedbackTitle.textContent = s.feedbackTitle;
+      if (feedbackLead) feedbackLead.textContent = s.feedbackLead;
+      if (feedbackCta) feedbackCta.textContent = s.feedbackCta;
+      if (fb1Quote) fb1Quote.textContent = s.fb1Quote;
+      if (fb1Meta) fb1Meta.textContent = s.fb1Meta;
+      if (fb2Quote) fb2Quote.textContent = s.fb2Quote;
+      if (fb2Meta) fb2Meta.textContent = s.fb2Meta;
+      if (fb3Quote) fb3Quote.textContent = s.fb3Quote;
+      if (fb3Meta) fb3Meta.textContent = s.fb3Meta;
+
+      if (faqTitle) faqTitle.textContent = s.faqTitle;
+      if (faqQ1) faqQ1.textContent = s.faqQ1;
+      if (faqA1) faqA1.innerHTML = s.faqA1;
+      if (faqQ2) faqQ2.textContent = s.faqQ2;
+      if (faqA2) faqA2.textContent = s.faqA2;
+      if (faqQ3) faqQ3.textContent = s.faqQ3;
+      if (faqA3) faqA3.innerHTML = s.faqA3;
+      if (faqQ4) faqQ4.textContent = s.faqQ4;
+      if (faqA4) faqA4.textContent = s.faqA4;
+      if (faqQ5) faqQ5.textContent = s.faqQ5;
+      if (faqA5) faqA5.textContent = s.faqA5;
+      if (faqQ6) faqQ6.textContent = s.faqQ6;
+      if (faqA6) faqA6.textContent = s.faqA6;
+      if (faqQ7) faqQ7.textContent = s.faqQ7;
+      if (faqA7) faqA7.textContent = s.faqA7;
+      if (faqQ8) faqQ8.textContent = s.faqQ8;
+      if (faqA8) faqA8.textContent = s.faqA8;
+      if (faqQ9) faqQ9.textContent = s.faqQ9;
+      if (faqA9) faqA9.textContent = s.faqA9;
+      if (faqQ10) faqQ10.textContent = s.faqQ10;
+      if (faqA10) faqA10.textContent = s.faqA10;
+
+      if (appStoreText) appStoreText.textContent = s.appStore;
+      if (googlePlayText) googlePlayText.textContent = s.googlePlay;
 
       if (privacyLink) privacyLink.textContent = s.privacy;
       if (contactLink) contactLink.textContent = s.contact;
@@ -1128,29 +1866,32 @@ if (howTitle) howTitle.textContent = s.howTitle;
 
     // open/close menu
     function toggleMenu(){
+      if (!langMenu) return;
       langMenu.classList.toggle("open");
       gaEvent("language_menu_toggle", { open: langMenu.classList.contains("open") });
     }
 
-    langBtn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      toggleMenu();
-    });
-
-    langBtn.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
+    if (langBtn){
+      langBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
         toggleMenu();
-      }
-    });
+      });
 
-    document.addEventListener("click", () => langMenu.classList.remove("open"));
+      langBtn.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggleMenu();
+        }
+      });
+    }
+
+    document.addEventListener("click", () => { if (langMenu) langMenu.classList.remove("open"); });
 
     document.querySelectorAll(".lang-item").forEach(item => {
       item.addEventListener("click", (e) => {
         e.stopPropagation();
         const code = item.getAttribute("data-lang");
-        langMenu.classList.remove("open");
+        if (langMenu) langMenu.classList.remove("open");
         setLang(code);
       });
     });
@@ -1159,6 +1900,69 @@ if (howTitle) howTitle.textContent = s.howTitle;
     setLang(saved);
 
     /* =============================
+       VIDEO AUTOPLAY (in-view)
+    ============================== */
+    const videoPlanner = document.getElementById("videoPlanner");
+    const videoRoute = document.getElementById("videoRoute");
+
+    async function safePlay(v){
+      if (!v) return;
+      try{
+        const p = v.play();
+        if (p && typeof p.then === "function") await p;
+      } catch(_){}
+    }
+
+    // Ensure Planner tries to autoplay (muted + playsinline)
+    if (videoPlanner){
+      videoPlanner.muted = true;
+      videoPlanner.playsInline = true;
+      safePlay(videoPlanner);
+      // If autoplay is blocked, play on first user interaction
+      const onFirst = () => { safePlay(videoPlanner); window.removeEventListener("pointerdown", onFirst); window.removeEventListener("touchstart", onFirst); };
+      window.addEventListener("pointerdown", onFirst, { once: true });
+      window.addEventListener("touchstart", onFirst, { once: true, passive: true });
+    }
+
+    // Route: play when visible
+    if (videoRoute){
+      videoRoute.muted = true;
+      videoRoute.playsInline = true;
+
+      const vio = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting){
+            safePlay(videoRoute);
+            gaEvent("video_play", { video: "route" });
+          } else {
+            try{ videoRoute.pause(); } catch(_){}
+          }
+        });
+      }, { threshold: 0.35 });
+
+      vio.observe(videoRoute);
+    }
+
+    /* =============================
+       ERROR TRACKING (lightweight)
+    ============================== */
+    window.addEventListener("error", (e) => {
+      gaEvent("js_error", {
+        message: (e && e.message) ? String(e.message).slice(0, 120) : "unknown",
+        source: (e && e.filename) ? String(e.filename).slice(0, 120) : "",
+        lineno: e && e.lineno ? e.lineno : 0,
+        colno: e && e.colno ? e.colno : 0
+      });
+    });
+
+    window.addEventListener("unhandledrejection", (e) => {
+      gaEvent("js_unhandledrejection", {
+        message: e && e.reason ? String(e.reason).slice(0, 160) : "unknown"
+      });
+    });
+
+
+/* =============================
        STICKY VISIBILITY + FOOTER DETECT
     ============================== */
     const stickyEl = document.getElementById("stickyCta");

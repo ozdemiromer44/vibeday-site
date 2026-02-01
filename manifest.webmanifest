@@ -1,0 +1,21 @@
+{
+  "name": "Vibe Day",
+  "short_name": "Vibe Day",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0c29",
+  "theme_color": "#0f0c29",
+  "description": "Plan your day in seconds — routes and suggestions tailored to your vibe.",
+  "icons": [
+    {
+      "src": "app-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "app-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
