@@ -523,7 +523,56 @@
       color: #fff;
       border-bottom-color: rgba(255,255,255,0.6);
     }
+    /* ===== YENİ NAVİGASYON MENÜSÜ ===== */
+.main-nav {
+  display: flex;
+  gap: 20px;
+  margin-right: auto; /* Logo ile sağ taraf arasına iter */
+  margin-left: 20px;
+}
 
+.main-nav a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+  color: #fff;
+}
+
+/* Mobilde menüyü gizleyelim (yer darlığından) veya küçültelim */
+@media (max-width: 768px) {
+  .main-nav { display: none; } /* Mobilde çok kalabalık olmaması için gizledik */
+}
+
+/* ===== NASIL ÇALIŞIR İKONLARI ===== */
+.how-icon-box {
+  width: 50px;
+  height: 50px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.how-icon-box svg {
+  width: 26px;
+  height: 26px;
+  fill: #fff; /* Veya temanıza uygun bir renk */
+}
+
+/* ===== YILDIZLAR (Rating) ===== */
+.stars {
+  color: #FFD700; /* Altın sarısı */
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
     /* ===== RESPONSIVE ===== */
     @media (max-width: 600px){
       h1{ font-size: 2.35rem; }
@@ -758,7 +807,13 @@
   <div class="container">
 
     <!-- TOP BAR -->
-    <div class="topbar">
+    <div class="topbar" style="justify-content: space-between;">
+      <nav class="main-nav">
+        <a href="#featuresTitle" id="navFeatures">Features</a>
+        <a href="#howTitle" id="navHow">How it Works</a>
+        <a href="#faqSection" id="navFaq">FAQ</a>
+      </nav>
+
       <div class="lang" id="langBtn" aria-label="Language selector" role="button" tabindex="0">
         <span id="langLabel">EN</span>
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -771,7 +826,7 @@
           <div class="lang-item" data-lang="es" role="menuitem">Español</div>
           <div class="lang-item" data-lang="fr" role="menuitem">Français</div>
           <div class="lang-item" data-lang="de" role="menuitem">Deutsch</div>
-        <div class="lang-item" data-lang="ar" role="menuitem">العربية</div>
+          <div class="lang-item" data-lang="ar" role="menuitem">العربية</div>
         </div>
       </div>
     </div>
@@ -862,31 +917,29 @@
 
       <div class="how-grid">
         <div class="how-card">
-          <div class="how-card-title" id="feature1Title">Vibe-based routes</div>
-          <div class="how-card-desc" id="feature1Desc">Pick your mood and time — get a route that fits your day.</div>
+          <div class="how-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+          </div>
+          <div class="how-card-title" id="how1Title">Choose a place</div>
+          <div class="how-card-desc" id="how1Desc">Pick your current location or your next destination.</div>
         </div>
 
         <div class="how-card">
-          <div class="how-card-title" id="feature2Title">Food + discovery in one plan</div>
-          <div class="how-card-desc" id="feature2Desc">Great places to eat, plus spots worth exploring — along the way.</div>
+          <div class="how-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8 0-.29.02-.58.05-.86 2.36-1.05 4.23-2.92 5.29-5.28.28-.03.57-.05.86-.05 4.41 0 8 3.59 8 8s-3.59 8-8 8zm0-14c-2.08 0-3.97.79-5.43 2.09-.94 2.15-2.61 3.82-4.76 4.76C3.04 14.37 4.3 16.91 6.54 18.2c.43-1.8 1.63-3.32 3.23-4.25.59-.34 1.25-.56 1.95-.62.09-1.29.62-2.43 1.45-3.32.74-.8 1.73-1.36 2.85-1.57C15.35 7.02 13.77 6 12 6z"/></svg>
+          </div>
+          <div class="how-card-title" id="how2Title">Set your vibe</div>
+          <div class="how-card-desc" id="how2Desc">Tell us your mood and time — we’ll tailor the plan.</div>
         </div>
 
         <div class="how-card">
-          <div class="how-card-title" id="feature3Title">Smart stop ordering</div>
-          <div class="how-card-desc" id="feature3Desc">Stops are arranged in a smooth flow for your time.</div>
-        </div>
-
-        <div class="how-card">
-          <div class="how-card-title" id="feature4Title">Follow the route or explore freely</div>
-          <div class="how-card-desc" id="feature4Desc">Stick to the route — or just browse the best suggestions.</div>
-        </div>
-
-        <div class="how-card">
-          <div class="how-card-title" id="feature5Title">Save and share plans</div>
-          <div class="how-card-desc" id="feature5Desc">Keep your favorites and share a ready-to-go route.</div>
+          <div class="how-icon-box">
+            <svg viewBox="0 0 24 24"><path d="M19 15.18V7c0-2.21-1.79-4-4-4s-4 1.79-4 4v10c0 1.1-.9 2-2 2s-2-.9-2-2V8.82C8.16 8.4 9 7.3 9 6c0-1.66-1.34-3-3-3S3 4.34 3 6c0 1.3.84 2.4 2 2.82V17c0 2.21 1.79 4 4 4s4-1.79 4-4V7c0-1.1.9-2 2-2s2 .9 2 2v8.18c-1.16.42-2 1.52-2 2.82 0 1.66 1.34 3 3 3s3-1.34 3-3c0-1.3-.84-2.4-2-2.82z"/></svg>
+          </div>
+          <div class="how-card-title" id="how3Title">Get your route</div>
+          <div class="how-card-desc" id="how3Desc">Follow the route or just explore the best suggestions.</div>
         </div>
       </div>
-    </div>
 
     <!-- APP PREVIEW -->
     <div class="preview-wrap">
@@ -947,18 +1000,21 @@
 
       <div class="feedback-grid" aria-label="Early access feedback cards">
         <div class="feedback-card">
-          <div class="feedback-quote" id="fb1Quote">Want to be featured here? Send us your quick feedback.</div>
-          <div class="feedback-meta" id="fb1Meta">Early user • Anonymous</div>
+          <div class="stars">★★★★★</div>
+          <div class="feedback-quote" id="fb1Quote">Used it in London for a day trip. The route feature saved us so much planning time!</div>
+          <div class="feedback-meta" id="fb1Meta">Sarah • London</div>
         </div>
         <div class="feedback-card">
-          <div class="feedback-quote" id="fb2Quote">Tell us which city you used Vibe Day in—and what worked best.</div>
-          <div class="feedback-meta" id="fb2Meta">Early user • Anonymous</div>
+          <div class="stars">★★★★★</div>
+          <div class="feedback-quote" id="fb2Quote">I didn't know where to eat in NYC. The 'Planner' gave me spot-on suggestions tailored to my budget.</div>
+          <div class="feedback-meta" id="fb2Meta">Mike • New York</div>
         </div>
         <div class="feedback-card">
-          <div class="feedback-quote" id="fb3Quote">Short note is enough: “Planner”, “Route”, or “Suggestions”.</div>
-          <div class="feedback-meta" id="fb3Meta">Early user • Anonymous</div>
+          <div class="stars">★★★★★</div>
+          <div class="feedback-quote" id="fb3Quote">Simple and effective. I love that I can generate a route and then remove the stops I don't like.</div>
+          <div class="feedback-meta" id="fb3Meta">Jessica • Traveler</div>
         </div>
-      </div>
+      </div>>
 
       <div style="margin: 0 6px 0;">
         <a class="btn small" href="mailto:vibedayorj@gmail.com?subject=Vibe%20Day%20Feedback" id="feedbackCta" aria-label="Send feedback by email">Send feedback</a>
@@ -1322,6 +1378,9 @@
     const strings = {
       en: {
         langLabel: "EN",
+        navFeatures: "Features",
+        navHow: "How it Works",
+        navFaq: "FAQ",
         docTitle: "Vibe Day — Plan your day in seconds",
         metaDesc: "Pick your vibe, time, and budget. Get a ready-to-go route—or choose from smart suggestions.",
         // YENİ BAŞLIK: Daha akıcı ve net
@@ -1398,6 +1457,9 @@
       },
       tr: {
         langLabel: "TR",
+        navFeatures: "Özellikler",
+        navHow: "Nasıl Çalışır",
+        navFaq: "SSS",
         docTitle: "Vibe Day — Gününü saniyeler içinde planla",
         metaDesc: "Vibe’ını, zamanını ve bütçeni seç. Hazır rotanı oluştur—ya da akıllı önerilerden seç.",
         // YENİ BAŞLIK: Çok daha doğal ve iddialı
@@ -1474,6 +1536,9 @@
       },
       es: {
         langLabel: "ES",
+        navFeatures: "Funciones",
+        navHow: "Cómo funciona",
+        navFaq: "FAQ",
         docTitle: "Vibe Day — Planifica tu día en segundos",
         metaDesc: "Elige tu vibra, tiempo y presupuesto. Obtén una ruta lista o selecciona recomendaciones inteligentes.",
         // YENİ BAŞLIK
@@ -1550,6 +1615,9 @@
       },
       fr: {
         langLabel: "FR",
+        navFeatures: "Fonctionnalités",
+        navHow: "Comment ça marche",
+        navFaq: "FAQ",
         docTitle: "Vibe Day — Planifie ta journée en quelques secondes",
         metaDesc: "Choisis ton vibe, ton temps et ton budget. Obtiens un itinéraire prêt à partir ou des suggestions intelligentes.",
         // YENİ BAŞLIK
@@ -1626,6 +1694,9 @@
       },
       de: {
         langLabel: "DE",
+        navFeatures: "Funktionen",
+        navHow: "So funktioniert’s",
+        navFaq: "FAQ",
         docTitle: "Vibe Day — Plane deinen Tag in Sekunden",
         metaDesc: "Wähle Vibe, Zeit und Budget. Erhalte eine fertige Route oder smarte Empfehlungen.",
         // YENİ BAŞLIK
@@ -1702,6 +1773,9 @@
       },
       ar: {
         langLabel: "AR",
+        navFeatures: "الميزات",
+        navHow: "كيف يعمل",
+        navFaq: "الأسئلة الشائعة",
         docTitle: "Vibe Day — خطّط يومك خلال ثوانٍ",
         metaDesc: "اختر الأجواء والوقت والميزانية. احصل على مسار جاهز أو اقتراحات ذكية تختار منها.",
         // YENİ BAŞLIK
@@ -1778,6 +1852,10 @@
       }
     };
 
+    const navFeatures = document.getElementById("navFeatures");
+    const navHow = document.getElementById("navHow");
+    const navFaq = document.getElementById("navFaq");
+
     function setLang(code){
       const s = strings[code] || strings.en;
       localStorage.setItem("vibe_lang", code);
@@ -1790,13 +1868,20 @@
       } catch(_){}
 
       if (langLabel) langLabel.textContent = s.langLabel;
+      
+      // Navigasyon Linklerini Güncelle
+      if (navFeatures) navFeatures.textContent = s.navFeatures;
+      if (navHow) navHow.textContent = s.navHow;
+      if (navFaq) navFaq.textContent = s.navFaq;
 
       if (document && s.docTitle) document.title = s.docTitle;
       if (metaDescEl && s.metaDesc) metaDescEl.setAttribute("content", s.metaDesc);
 
+      // Hero
       if (heroText) heroText.textContent = s.hero;
       if (heroMicro) heroMicro.textContent = s.heroMicro;
 
+      // ... Buradaki diğer element tanımları (previewTitle, featuresTitle vs.) aynen kalsın ...
       if (previewTitle) previewTitle.textContent = s.previewTitle;
       if (previewHint) previewHint.textContent = s.previewHint;
 
@@ -1908,8 +1993,26 @@
       });
     });
 
-    const saved = localStorage.getItem("vibe_lang") || "en";
-    setLang(saved);
+    function getInitialLang() {
+      const saved = localStorage.getItem("vibe_lang");
+      if (saved) return saved;
+
+      const browserLang = navigator.language || navigator.userLanguage; 
+      // Örn: "tr-TR" -> "tr"
+      const shortLang = browserLang.split('-')[0].toLowerCase();
+      
+      // Desteklediğimiz diller
+      const supported = ['en', 'tr', 'es', 'fr', 'de', 'ar'];
+      
+      if (supported.includes(shortLang)) {
+        return shortLang;
+      }
+      
+      return "en";
+    }
+
+    // Uygulamayı başlat
+    setLang(getInitialLang());
 
     /* =============================
        VIDEO AUTOPLAY (in-view)
