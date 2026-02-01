@@ -102,7 +102,7 @@
       gap: 10px;
     }
 
-    .lang{
+    .lang {
       position: relative;
       display: inline-flex;
       align-items: center;
@@ -118,23 +118,30 @@
       font-weight: 700;
       font-size: 0.9rem;
       user-select: none;
+      
+      /* EKLEMEN GEREKEN KRİTİK SATIR BURASI: */
+      margin-left: auto; /* Bu satır butonu zorla en sağa iter */
     }
 
     .lang svg{ width: 18px; height: 18px; fill: currentColor; opacity: 0.9; }
 
-    .lang-menu{
-  position: absolute;
-  right: 0;
-  top: 46px;
-  background: rgba(15,12,41,0.95); /* Arkası biraz daha koyu olsun */
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 14px;
-  overflow: hidden;
-  display: none;
-  min-width: 180px;
-  z-index: 1000; /* BURASI DEĞİŞTİ: 20 yerine 1000 yaptık */
-  box-shadow: 0 22px 60px rgba(0,0,0,0.5);
-}
+    .lang-menu {
+      position: absolute;
+      /* Konumlandırma ayarları güncellendi: */
+      top: 100%;        /* Butonun tam altına gelmesi için */
+      margin-top: 10px; /* Butonla arasına biraz boşluk */
+      right: 0;         /* Menüyü sağa hizalar */
+      left: auto;       /* Sola gitmesini engeller */
+      
+      background: rgba(15,12,41,0.95);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 14px;
+      overflow: hidden;
+      display: none;
+      min-width: 160px; /* Genişliği mobilde taşmasın diye biraz küçülttük */
+      z-index: 1000;
+      box-shadow: 0 22px 60px rgba(0,0,0,0.5);
+    }
 
     .lang-menu.open{ display: block; }
 
@@ -976,18 +983,18 @@
 
       <div class="how-grid">
         <div class="how-card">
-          <div class="how-card-title" id="how1Title">Choose a place</div>
-          <div class="how-card-desc" id="how1Desc">Pick your current location or your next destination.</div>
+          <div class="how-card-title" id="hw1Title">Choose a place</div>
+          <div class="how-card-desc" id="hw1Desc">Pick your current location or your next destination.</div>
         </div>
 
         <div class="how-card">
-          <div class="how-card-title" id="how2Title">Set your vibe</div>
-          <div class="how-card-desc" id="how2Desc">Tell us your mood and time — we’ll tailor the plan.</div>
+          <div class="how-card-title" id="hw2Title">Set your vibe</div>
+          <div class="how-card-desc" id="hw2Desc">Tell us your mood and time — we’ll tailor the plan.</div>
         </div>
 
         <div class="how-card">
-          <div class="how-card-title" id="how3Title">Get your route</div>
-          <div class="how-card-desc" id="how3Desc">Follow the route or just explore the best suggestions.</div>
+          <div class="how-card-title" id="hw3Title">Get your route</div>
+          <div class="how-card-desc" id="hw3Desc">Follow the route or just explore the best suggestions.</div>
         </div>
       </div>
     </div>
@@ -1300,7 +1307,12 @@
 
     const previewTitle = document.getElementById("previewTitle");
     const previewHint = document.getElementById("previewHint");
-
+    const hw1Title = document.getElementById("hw1Title");
+    const hw1Desc = document.getElementById("hw1Desc");
+    const hw2Title = document.getElementById("hw2Title");
+    const hw2Desc = document.getElementById("hw2Desc");
+    const hw3Title = document.getElementById("hw3Title");
+    const hw3Desc = document.getElementById("hw3Desc");
     const featuresTitle = document.getElementById("featuresTitle");
     const feature1Title = document.getElementById("feature1Title");
     const feature1Desc = document.getElementById("feature1Desc");
@@ -1876,7 +1888,12 @@
 
       if (document && s.docTitle) document.title = s.docTitle;
       if (metaDescEl && s.metaDesc) metaDescEl.setAttribute("content", s.metaDesc);
-
+      if (hw1Title) hw1Title.textContent = s.how1Title;
+      if (hw1Desc) hw1Desc.textContent = s.how1Desc;
+      if (hw2Title) hw2Title.textContent = s.how2Title;
+      if (hw2Desc) hw2Desc.textContent = s.how2Desc;
+      if (hw3Title) hw3Title.textContent = s.how3Title;
+      if (hw3Desc) hw3Desc.textContent = s.how3Desc;
       // Hero
       if (heroText) heroText.textContent = s.hero;
       if (heroMicro) heroMicro.textContent = s.heroMicro;
