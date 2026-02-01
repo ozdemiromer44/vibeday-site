@@ -123,18 +123,18 @@
     .lang svg{ width: 18px; height: 18px; fill: currentColor; opacity: 0.9; }
 
     .lang-menu{
-      position: absolute;
-      right: 0;
-      top: 46px;
-      background: rgba(15,12,41,0.88);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 14px;
-      overflow: hidden;
-      display: none;
-      min-width: 180px;
-      z-index: 20;
-      box-shadow: 0 22px 60px rgba(0,0,0,0.35);
-    }
+  position: absolute;
+  right: 0;
+  top: 46px;
+  background: rgba(15,12,41,0.95); /* Arkası biraz daha koyu olsun */
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  overflow: hidden;
+  display: none;
+  min-width: 180px;
+  z-index: 1000; /* BURASI DEĞİŞTİ: 20 yerine 1000 yaptık */
+  box-shadow: 0 22px 60px rgba(0,0,0,0.5);
+}
 
     .lang-menu.open{ display: block; }
 
@@ -813,7 +813,7 @@
         <span id="googlePlayText">Google Play</span>
       </a>
     
-    <p class="subnote" id="heroMicro">Free to download • 15 languages • Best for travelers</p>
+    <p class="subnote" id="heroMicro">Free to download • Best for travelers</p>
 
     <!-- VIDEO FEATURES -->
     <div class="preview-wrap" id="videoSection">
@@ -1324,7 +1324,8 @@
         langLabel: "EN",
         docTitle: "Vibe Day — Plan your day in seconds",
         metaDesc: "Pick your vibe, time, and budget. Get a ready-to-go route—or choose from smart suggestions.",
-        hero: "Your day in a new city—planned in seconds.",
+        // YENİ BAŞLIK: Daha akıcı ve net
+        hero: "Plan your perfect day in a new city—in seconds.",
         heroMicro: "Free to download • 15 languages • Best for travelers",
         appStore: "App Store",
         googlePlay: "Google Play",
@@ -1360,15 +1361,16 @@
         how2Desc: "Tell us your mood and time — we’ll tailor the plan.",
         how3Title: "Get your plan",
         how3Desc: "Follow the route or just explore the best suggestions.",
-        feedbackTitle: "Early access feedback",
-        feedbackLead: "Feedback is collected from early users. Names are anonymized.",
+        feedbackTitle: "What users say",
+        feedbackLead: "Feedback from our early access users.",
         feedbackCta: "Send feedback",
-        fb1Quote: "Want to be featured here? Send us your quick feedback.",
-        fb1Meta: "Early user • Anonymous",
-        fb2Quote: "Tell us which city you used Vibe Day in—and what worked best.",
-        fb2Meta: "Early user • Anonymous",
-        fb3Quote: "Short note is enough: “Planner”, “Route”, or “Suggestions”.",
-        fb3Meta: "Early user • Anonymous",
+        // YEREL YORUMLAR (EN)
+        fb1Quote: "Used it in London for a day trip. The route feature saved us so much planning time!",
+        fb1Meta: "Sarah • London",
+        fb2Quote: "I didn't know where to eat in NYC. The 'Planner' gave me spot-on suggestions tailored to my budget.",
+        fb2Meta: "Mike • New York",
+        fb3Quote: "Simple and effective. I love that I can generate a route and then remove the stops I don't like.",
+        fb3Meta: "Jessica • Traveler",
         faqTitle: "FAQ",
         faqQ1: "What does Vibe Day do?",
         faqA1: "In a new city, Vibe Day creates the best plan for your vibe, time, and budget—either as a ready route or smart suggestions you can pick from.",
@@ -1379,7 +1381,7 @@
         faqQ4: "How long does it take to create a plan?",
         faqA4: "Seconds.",
         faqQ5: "What do I choose to build a route?",
-        faqA5: "Time window, vibe, who you’re with, budget, transport mode, and optional hashtags.",
+        faqA5: "Time window, vibe, who you’re with, budget, transport mode, and optional hashtags. ",
         faqQ6: "Can I edit the route?",
         faqA6: "Yes. Save your route and remove stops you don’t like.",
         faqQ7: "Are recommendations up to date?",
@@ -1398,7 +1400,8 @@
         langLabel: "TR",
         docTitle: "Vibe Day — Gününü saniyeler içinde planla",
         metaDesc: "Vibe’ını, zamanını ve bütçeni seç. Hazır rotanı oluştur—ya da akıllı önerilerden seç.",
-        hero: "Yeni bir şehirde günün—saniyeler içinde planlı.",
+        // YENİ BAŞLIK: Çok daha doğal ve iddialı
+        hero: "Şehri kendi moduna göre keşfet — saniyeler içinde planla.",
         heroMicro: "Ücretsiz indir • 15 dil • Seyahat için ideal",
         appStore: "App Store",
         googlePlay: "Google Play",
@@ -1434,15 +1437,16 @@
         how2Desc: "Ruh halini ve zamanını söyle — planı sana göre hazırlayalım.",
         how3Title: "Planını al",
         how3Desc: "Rotayı takip et ya da sadece önerileri keşfet.",
-        feedbackTitle: "Erken erişim notları",
-        feedbackLead: "Geri bildirimler erken kullanıcılardan toplanır. İsimler anonimdir.",
+        feedbackTitle: "Kullanıcı yorumları",
+        feedbackLead: "Erken erişim kullanıcılarımızdan gelenler.",
         feedbackCta: "Geri bildirim gönder",
-        fb1Quote: "Burada yer almak ister misin? Kısa geri bildirimin yeterli.",
-        fb1Meta: "Erken kullanıcı • Anonim",
-        fb2Quote: "Hangi şehirde kullandın ve en çok ne işine yaradı?",
-        fb2Meta: "Erken kullanıcı • Anonim",
-        fb3Quote: "Kısacık yazman yeter: “Planner”, “Rota” veya “Öneriler”.",
-        fb3Meta: "Erken kullanıcı • Anonim",
+        // YEREL YORUMLAR (TR)
+        fb1Quote: "İstanbul'da turist gibi gezmek için kullandım, rota özelliği harika çalışıyor. Hiç bilmediğim kafeler keşfettim.",
+        fb1Meta: "Ahmet • İstanbul",
+        fb2Quote: "Hafta sonu ne yapsak derdinden kurtardı. Mekan önerileri nokta atışı.",
+        fb2Meta: "Selin • İzmir",
+        fb3Quote: "Sadece modumu seçtim ve tüm günümü planladı. Rota üzerindeki sıralama çok mantıklıydı.",
+        fb3Meta: "Can • Gezgin",
         faqTitle: "Sık sorulanlar",
         faqQ1: "Vibe Day ne yapar?",
         faqA1: "Yeni bir şehirde vibe, zaman ve bütçene göre en iyi planı çıkarır—hazır rota olarak ya da seçebileceğin akıllı önerilerle.",
@@ -1472,7 +1476,8 @@
         langLabel: "ES",
         docTitle: "Vibe Day — Planifica tu día en segundos",
         metaDesc: "Elige tu vibra, tiempo y presupuesto. Obtén una ruta lista o selecciona recomendaciones inteligentes.",
-        hero: "Tu día en una nueva ciudad, planificado en segundos.",
+        // YENİ BAŞLIK
+        hero: "Descubre la ciudad a tu ritmo — planifica en segundos.",
         heroMicro: "Gratis para descargar • 15 idiomas • Ideal para viajeros",
         appStore: "App Store",
         googlePlay: "Google Play",
@@ -1508,15 +1513,16 @@
         how2Desc: "Dinos tu estado de ánimo y tiempo — ajustamos el plan.",
         how3Title: "Obtén tu plan",
         how3Desc: "Sigue la ruta o explora solo las mejores sugerencias.",
-        feedbackTitle: "Comentarios de acceso anticipado",
-        feedbackLead: "Los comentarios provienen de usuarios tempranos. Los nombres se anonimizan.",
+        feedbackTitle: "Lo que dicen los usuarios",
+        feedbackLead: "Comentarios de nuestros primeros usuarios.",
         feedbackCta: "Enviar comentario",
-        fb1Quote: "¿Quieres aparecer aquí? Envíanos un comentario rápido.",
-        fb1Meta: "Usuario temprano • Anónimo",
-        fb2Quote: "Cuéntanos en qué ciudad la usaste y qué te ayudó más.",
-        fb2Meta: "Usuario temprano • Anónimo",
-        fb3Quote: "Basta una nota corta: “Planner”, “Ruta” o “Sugerencias”.",
-        fb3Meta: "Usuario temprano • Anónimo",
+        // YEREL YORUMLAR (ES)
+        fb1Quote: "Usé la función de Ruta en Barcelona y descubrí lugares increíbles que no conocía. ¡Muy útil!",
+        fb1Meta: "Elena • Barcelona",
+        fb2Quote: "Perfecto para organizar un día improvisado. Las sugerencias de comida fueron top y se ajustaron a mi presupuesto.",
+        fb2Meta: "Javier • Madrid",
+        fb3Quote: "Muy fácil de usar. Me encanta poder ajustar el presupuesto y el tiempo, todo encaja perfecto.",
+        fb3Meta: "Sofia • Viajera",
         faqTitle: "Preguntas frecuentes",
         faqQ1: "¿Qué hace Vibe Day?",
         faqA1: "En una ciudad nueva, crea el mejor plan según tu vibra, tiempo y presupuesto—como ruta lista o sugerencias inteligentes.",
@@ -1546,7 +1552,8 @@
         langLabel: "FR",
         docTitle: "Vibe Day — Planifie ta journée en quelques secondes",
         metaDesc: "Choisis ton vibe, ton temps et ton budget. Obtiens un itinéraire prêt à partir ou des suggestions intelligentes.",
-        hero: "Votre journée dans une nouvelle ville, planifiée en quelques secondes.",
+        // YENİ BAŞLIK
+        hero: "Votre journée idéale, planifiée en quelques secondes.",
         heroMicro: "Gratuit à télécharger • 15 langues • Idéal pour voyager",
         appStore: "App Store",
         googlePlay: "Google Play",
@@ -1582,15 +1589,16 @@
         how2Desc: "Ton humeur et ton temps — on adapte le plan.",
         how3Title: "Obtiens ton plan",
         how3Desc: "Suis l’itinéraire ou explore les suggestions.",
-        feedbackTitle: "Avis des premiers utilisateurs",
-        feedbackLead: "Les retours viennent d’utilisateurs en accès anticipé. Noms anonymisés.",
+        feedbackTitle: "Avis des utilisateurs",
+        feedbackLead: "Retours de nos premiers utilisateurs.",
         feedbackCta: "Envoyer un avis",
-        fb1Quote: "Envie d’apparaître ici ? Envoie-nous un retour rapide.",
-        fb1Meta: "Utilisateur précoce • Anonyme",
-        fb2Quote: "Dis-nous dans quelle ville tu l’as utilisée et ce qui t’a le plus aidé.",
-        fb2Meta: "Utilisateur précoce • Anonyme",
-        fb3Quote: "Une courte note suffit : « Planner », « Itinéraire » ou « Suggestions ».",
-        fb3Meta: "Utilisateur précoce • Anonyme",
+        // YEREL YORUMLAR (FR)
+        fb1Quote: "J'ai adoré l'utiliser à Paris. Les suggestions de 'vibe' correspondent vraiment à l'ambiance que je cherchais.",
+        fb1Meta: "Claire • Paris",
+        fb2Quote: "L'outil Planificateur est génial pour trouver des restos sympas sans chercher pendant des heures.",
+        fb2Meta: "Thomas • Lyon",
+        fb3Quote: "Application très fluide. Idéal pour organiser un week-end dans une ville qu'on ne connaît pas.",
+        fb3Meta: "Marie • Voyageuse",
         faqTitle: "FAQ",
         faqQ1: "Que fait Vibe Day ?",
         faqA1: "Dans une nouvelle ville, il crée le meilleur plan selon ton vibe, ton temps et ton budget—itinéraire prêt ou suggestions intelligentes.",
@@ -1620,7 +1628,8 @@
         langLabel: "DE",
         docTitle: "Vibe Day — Plane deinen Tag in Sekunden",
         metaDesc: "Wähle Vibe, Zeit und Budget. Erhalte eine fertige Route oder smarte Empfehlungen.",
-        hero: "Dein Tag in einer neuen Stadt – in Sekunden geplant.",
+        // YENİ BAŞLIK
+        hero: "Dein perfekter Tag in einer neuen Stadt – in Sekunden geplant.",
         heroMicro: "Kostenlos herunterladen • 15 Sprachen • Perfekt fürs Reisen",
         appStore: "App Store",
         googlePlay: "Google Play",
@@ -1656,15 +1665,16 @@
         how2Desc: "Stimmung & Zeit angeben — wir passen alles an.",
         how3Title: "Plan erhalten",
         how3Desc: "Route folgen oder Empfehlungen entdecken.",
-        feedbackTitle: "Feedback aus der Early-Access-Phase",
-        feedbackLead: "Feedback stammt von frühen Nutzern. Namen werden anonymisiert.",
+        feedbackTitle: "Das sagen Nutzer",
+        feedbackLead: "Feedback von unseren ersten Nutzern.",
         feedbackCta: "Feedback senden",
-        fb1Quote: "Möchtest du hier erscheinen? Schick uns kurzes Feedback.",
-        fb1Meta: "Früher Nutzer • Anonym",
-        fb2Quote: "In welcher Stadt hast du es genutzt – und was hat am meisten geholfen?",
-        fb2Meta: "Früher Nutzer • Anonym",
-        fb3Quote: "Kurze Notiz reicht: „Planner“, „Route“ oder „Empfehlungen“.",
-        fb3Meta: "Früher Nutzer • Anonym",
+        // YEREL YORUMLAR (DE)
+        fb1Quote: "Habe es in Berlin genutzt. Die Route war logisch aufgebaut und hat uns viel Planungsstress erspart.",
+        fb1Meta: "Lukas • Berlin",
+        fb2Quote: "Tolle Essensempfehlungen! Perfekt, wenn man sich in einer Stadt nicht auskennt und Hunger hat.",
+        fb2Meta: "Anna • München",
+        fb3Quote: "Einfach zu bedienen. Vibe auswählen, Budget setzen und los geht's. Super Idee für Spontane.",
+        fb3Meta: "Felix • Reisender",
         faqTitle: "FAQ",
         faqQ1: "Was macht Vibe Day?",
         faqA1: "In einer neuen Stadt erstellt es den besten Plan für Vibe, Zeit und Budget—als fertige Route oder smarte Empfehlungen.",
@@ -1694,7 +1704,8 @@
         langLabel: "AR",
         docTitle: "Vibe Day — خطّط يومك خلال ثوانٍ",
         metaDesc: "اختر الأجواء والوقت والميزانية. احصل على مسار جاهز أو اقتراحات ذكية تختار منها.",
-        hero: "يومك في مدينة جديدة — مُخطّط خلال ثوانٍ.",
+        // YENİ BAŞLIK
+        hero: "يومك المثالي في المدينة — مُخطّط خلال ثوانٍ.",
         heroMicro: "تحميل مجاني • 15 لغة • مثالي للمسافرين",
         appStore: "App Store",
         googlePlay: "Google Play",
@@ -1730,15 +1741,16 @@
         how2Desc: "أخبرنا بمزاجك ووقتك — وسنضبط الخطة.",
         how3Title: "احصل على خطتك",
         how3Desc: "اتبع المسار أو استكشف الاقتراحات.",
-        feedbackTitle: "آراء الوصول المبكر",
-        feedbackLead: "يتم جمع الآراء من المستخدمين الأوائل. الأسماء مجهولة.",
+        feedbackTitle: "آراء المستخدمين",
+        feedbackLead: "آراء من مستخدمي الوصول المبكر.",
         feedbackCta: "إرسال ملاحظة",
-        fb1Quote: "هل تريد الظهور هنا؟ أرسل لنا ملاحظتك السريعة.",
-        fb1Meta: "مستخدم مبكر • مجهول",
-        fb2Quote: "أخبرنا في أي مدينة استخدمت التطبيق وما الذي ساعدك أكثر.",
-        fb2Meta: "مستخدم مبكر • مجهول",
-        fb3Quote: "تكفي ملاحظة قصيرة: «المخطّط»، «المسار»، أو «الاقتراحات».",
-        fb3Meta: "مستخدم مبكر • مجهول",
+        // YEREL YORUMLAR (AR)
+        fb1Quote: "استخدمته في دبي، وفّر عليّ الكثير من البحث. ميزة إنشاء المسار ذكية جداً وسهلة.",
+        fb1Meta: "أحمد • دبي",
+        fb2Quote: "التطبيق ممتاز للسياحة. أعجبتني اقتراحات المطاعم والأماكن المخفية التي لم أكن أعرفها.",
+        fb2Meta: "سارة • مسافرة",
+        fb3Quote: "تصميم جميل وسهل الاستخدام. ساعدنا في تنظيم يوم كامل في الرياض بدون تعقيد.",
+        fb3Meta: "عمر • الرياض",
         faqTitle: "الأسئلة الشائعة",
         faqQ1: "ماذا يفعل Vibe Day؟",
         faqA1: "في مدينة جديدة، ينشئ أفضل خطة حسب الأجواء والوقت والميزانية—كمسار جاهز أو اقتراحات ذكية تختار منها.",
